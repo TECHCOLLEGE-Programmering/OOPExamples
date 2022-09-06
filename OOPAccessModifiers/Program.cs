@@ -1,4 +1,4 @@
 ﻿using OOPAccessModifiers;
 
-GameController.SetupGame(4);
-GameController.StartGame();
+//GameController.SetupGame(4);
+GameController.MenuController();

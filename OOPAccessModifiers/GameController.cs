@@ -33,20 +33,42 @@ namespace OOPAccessModifiers
                         Console.WriteLine("{0}: Uno!", player.Name);
                     }
                 }
+                Console.WriteLine("Press enter for next round");
+                ConsoleKeyInfo key = Console.ReadKey();
+                if (key.Key == ConsoleKey.Escape)
+                {
+                    GameDone = true;
+                    break;
+                }
             }
+            MenuController();
         }
-        public static void StartGame()
+        public static void MenuController()
         {
-            throw new System.NotImplementedException();
+            List<string> menuOptions = new List<string>
+            { "Start Game", "Choose Players", "See Winers" };
+            Menu menu = new Menu("Game Menu", "here you can choose game mode and player", menuOptions);
+            menu.MenuControl();
         }
 
         public static void SetupGame(int amountOfPlayers)
         {
             for (int i = 0; i < amountOfPlayers; i++)
             {
-                players.Add(new Player(Console.ReadLine()));
+                do
+                {
+                    try
+                    {
+                        Console.WriteLine("Enter the name of Player {0}", i + 1);
+                        players.Add(new Player(Console.ReadLine()));
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Console.WriteLine("Please Enter a name in the console before hitting enter.");
+                    }
+                } while (players.Last().Name != null);
             }
-            throw new System.NotImplementedException();
+            GameLoop();
         }
         public static void excuteCard(Player player, Card playedCard)
         {
