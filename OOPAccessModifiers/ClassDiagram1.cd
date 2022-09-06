@@ -3,18 +3,25 @@
   <Class Name="OOPAccessModifiers.Card">
     <Position X="9" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Card.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPAccessModifiers.Deck">
     <Position X="9" Y="3.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="OOPAccessModifiers.Deck.DeckTypeEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Classes\Deck.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAIAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Deck.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Cards" />
+      <Field Name="Cards" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="OOPAccessModifiers.Player">
@@ -24,30 +31,30 @@
       <FileName>Classes\Player.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Deck" />
+      <Field Name="Deck" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="CardsInHand" />
+      <Field Name="CardsInHand" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="OOPAccessModifiers.GameController">
     <Position X="4.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAAAAAAQAAAAAgAAAAAAAAIAAAQAAAAAA=</HashCode>
+      <HashCode>AAAABAAAAAQAAAAAAQAAAAAgAAAAAAAAIAAAQAAAAAA=</HashCode>
       <FileName>GameController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPAccessModifiers.Screen">
     <Position X="5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAgAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAAAAgAAAAAABAAAEQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Screen.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPAccessModifiers.Menu">
     <Position X="7.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AEAAAAAAAAAAAgAAAAAAIAAAAAAAgAAAAIAAAAAAAAA=</HashCode>
       <FileName>Menu.cs</FileName>
     </TypeIdentifier>
   </Class>

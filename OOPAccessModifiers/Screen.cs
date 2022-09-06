@@ -12,11 +12,39 @@ namespace OOPAccessModifiers
             this.title = title;
             this.body = body;
         }
-        string title;
-        string body;
-        internal void Draw()
+        private readonly string title;
+        private readonly string body;
+        internal virtual void Draw()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            Console.Title = title;
+            Console.WriteLine("{0,"+ GetCenterPlacement(title).ToString() + "}\n", title);
+            Console.WriteLine("{0," + GetCenterPlacement(body).ToString() + "}", body);
+        }
+        protected int GetCenterPlacement(string text)
+        {
+            int width = Console.WindowWidth;
+            int textWidth = text.Length;
+            int centerPlacement = width / 2 + textWidth / 2 + 1;
+            return centerPlacement;
+        }
+        protected int EnterIntValue(string promt)
+        {
+            int number;
+            string str = "";
+            do
+            {
+                try
+                {
+                    Console.WriteLine(promt);
+                    str = Console.ReadLine();
+                } 
+                catch (NullReferenceException)
+                {
+                    Console.WriteLine("Please enter a number");
+                }
+            } while (!(int.TryParse(str, out number) && str != ""));
+            return number;
         }
     }
 }
