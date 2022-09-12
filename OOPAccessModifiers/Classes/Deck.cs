@@ -19,6 +19,26 @@ namespace OOPAccessModifiers
         }
         internal DeckTypeEnum type;
         internal List<Card> Cards = new List<Card>();
+        public Card DealCard()
+        {
+            Card topCard;
+            try
+            {
+                topCard = Cards.Last();
+                
+            } catch (NullReferenceException)
+            {
+                Console.WriteLine("Shuffling dicard pile, except for top card...");
+                //TODO: Add discard pile into deck
+                //Shuffle();
+            }
+            finally
+            {
+                topCard = Cards.Last();
+                Cards.Remove(topCard);
+            }
+            return topCard;
+        }
         private void MakeDeck(int deckSize)
         {
             if (type == DeckTypeEnum.advanced)
@@ -34,7 +54,13 @@ namespace OOPAccessModifiers
                     CardEnum randomCard = (CardEnum)values.GetValue(random.Next(values.Length));
                     Cards.Add(new Card(randomCard));
                 }
+                //TODO: Add nessesary card and then shuffle deck
+                //Shuffle();
             }
+        }
+        private void Shuffle()
+        {
+            throw new NotImplementedException();
         }
     }
 }

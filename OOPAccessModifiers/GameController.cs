@@ -20,8 +20,10 @@ namespace OOPAccessModifiers
                     Card card = player.PlayCard();
                     if (player.GetHandSize() == 0)
                     {
-                        Console.WriteLine("player {0} won the game.", player.Name); 
+                        Console.WriteLine("player {0} won the game!", player.Name); 
+                        LogPlayerWin(player);
                         GameDone = false;
+                        Console.Read();
                         break;
                     }
                     if (card == null)
@@ -70,9 +72,17 @@ namespace OOPAccessModifiers
             }
             GameLoop();
         }
-        public static void excuteCard(Player player, Card playedCard)
+        public static void ExcuteCard(Player player, Card playedCard)
         {
             throw new System.NotImplementedException();
-        }        
+        }
+        private static void LogPlayerWin(Player player)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(player.Name); //TODO: flesh out log describtion, number of rounds after win?
+            // flush every 20 seconds as you do it
+            File.AppendAllText("log.txt", sb.ToString());
+            sb.Clear();
+        }
     }
 }

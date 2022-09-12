@@ -5,29 +5,17 @@ using System.Text;
 
 namespace OOPAccessModifiers
 {
-    //TODO: Card should have number and color, but not if wild card.
-    public enum CardEnum
+    internal abstract class Card
     {
-        Number,
-        Draw2,
-        Reverse,
-        Skip,
-        Wild,
-        WildDraw4,
-        Trade,
-        DiscardAllColor
-    }
-    internal class Card
-    {
-        internal Card(CardEnum card)
+        internal uint number;
+        internal abstract bool ToCompare(Card otherCard);
+        public new virtual string ToString()
         {
-            CardType = card;
-            if (CardType == CardEnum.Number)
-            {
-                number = 1;
-            }
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this.GetType());
+            sb.Append(' ');
+            sb.Append(number);
+            return sb.ToString();
         }
-        UInt16 number;
-        internal CardEnum CardType { get; set; }
     }
 }

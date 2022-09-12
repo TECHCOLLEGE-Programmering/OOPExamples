@@ -72,13 +72,14 @@ namespace OOPAccessModifiers
                             GameController.SetupGame(numberOfPlayers);
                             GameController.GameLoop();
                             break;
-                        case 1:
+                        case 1: 
+                            //TODO: fix that game setup doesn't happen twice.
                             numberOfPlayers = EnterIntValue(
                                 "Enter the number of players that will be partisipating in the game");
                             GameController.SetupGame(numberOfPlayers);
                             break;
                         case 2:
-                            //Winers list.
+                            //TODO: Winers list in a file.
                             throw new NotImplementedException();
                             break;
                     }

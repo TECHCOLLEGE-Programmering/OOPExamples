@@ -37,12 +37,15 @@ namespace OOPAccessModifiers
         }
         internal Card PlayCard()
         {
-            throw new System.NotImplementedException();
+            Array values = Enum.GetValues(typeof(CardEnum));
+            foreach (CardEnum v in values)
+            {
+
+            }
         }
         internal Card DrawCard()
         {
-            Card topCard = Deck.Cards.Last();
-            Deck.Cards.Remove(topCard);
+            Card topCard = Deck.DealCard();
             this.CardsInHand.Add(topCard);
             return topCard;
         }
