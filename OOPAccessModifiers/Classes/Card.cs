@@ -7,6 +7,10 @@ namespace OOPAccessModifiers
 {
     internal abstract class Card
     {
+        internal Card(uint number)
+        {
+            this.number = number;
+        }
         internal uint number;
         internal abstract bool ToCompare(Card otherCard);
         public new virtual string ToString()
