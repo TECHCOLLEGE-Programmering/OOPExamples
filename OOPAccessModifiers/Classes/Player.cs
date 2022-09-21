@@ -10,24 +10,18 @@ namespace OOPAccessModifiers
         internal Player(string name)
         {
             ID = IDCounter++;
-            Name = name;
+            this.Name = name;
             CardsInHand = DrawCards(7);
         }
         static private int IDCounter = 0;
         internal int ID { get; private set; }
-        internal string Name
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        internal string Name { get; private set; }
         private List<Card> CardsInHand = new List<Card>();
         internal int GetHandSize()
         {
             return CardsInHand.Count;
         }
-        internal static Deck Deck = new Deck(30, Deck.DeckTypeEnum.normal);
+        internal static Deck Deck;
         internal bool Uno
         {
             get => default;
@@ -37,11 +31,7 @@ namespace OOPAccessModifiers
         }
         internal Card PlayCard()
         {
-            Array values = Enum.GetValues(typeof(CardEnum));
-            foreach (CardEnum v in values)
-            {
-
-            }
+            throw new NotImplementedException();
         }
         internal Card DrawCard()
         {
