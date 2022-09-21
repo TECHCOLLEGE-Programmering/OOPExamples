@@ -7,11 +7,17 @@ namespace OOPAccessModifiers
 {
     public class Menu : Screen
     {
-        internal Menu(string title, string body, List<string> options) : base(title, body)
+        internal Menu(string title, string body, List<Menuoption> options) : base(title, body)
         {
-            this.options = options ?? new List<string>();
+            this.options = options ?? new List<Menuoption>();
+            if (this.title != "Main Menu" && !this.title.Contains("Choose"))
+            {
+                this.options.Add(new Menuoption(() => Menu.menuLoopControl = false, "Back"));
+            }
+            this.options.Add(new Menuoption(() => Environment.Exit(0), "Exit Game"));
             SelectedIndex = 0;
         }
+        private List<Menuoption> options;
         private int selectedIndex;
         private int SelectedIndex 
         {
@@ -20,7 +26,7 @@ namespace OOPAccessModifiers
             {
                 try
                 {
-                    string s = options[value];
+                    string s = options[value].ToString();
                     this.selectedIndex = value;
                 } catch (ArgumentOutOfRangeException)
                 {
@@ -28,7 +34,7 @@ namespace OOPAccessModifiers
                 }
             }
         }
-        List<string> options;
+        internal static bool menuLoopControl = true;
         internal override void Draw()
         {
             base.Draw();
@@ -37,54 +43,41 @@ namespace OOPAccessModifiers
                 Console.Write("_");
             }
             Console.WriteLine("\n");
-            foreach (string option in options)
+            foreach (var option in options)
             {
                 if (option == options[SelectedIndex])
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                 }
-                Console.WriteLine("{0," + GetCenterPlacement(option).ToString() + "}\n", option);
+                Console.WriteLine("{0," + GetCenterPlacement(option.ToString()).ToString() + "}\n", option.ToString());
                 Console.ResetColor();
             }
         }
         internal void MenuControl()
         {
             ConsoleKeyInfo key = new ConsoleKeyInfo();
-            while (key.Key != ConsoleKey.Escape)
-            {
+            do {
                 Draw();
                 key = Console.ReadKey();
-                if (key.Key == ConsoleKey.UpArrow)
+                switch (key.Key)
                 {
-                    SelectedIndex--;
+                    case ConsoleKey.W:
+                    case ConsoleKey.UpArrow:
+                        SelectedIndex--;
+                        break;
+                    case ConsoleKey.S:
+                    case ConsoleKey.DownArrow:
+                        SelectedIndex++;
+                        break;
+                    case ConsoleKey.Enter:
+                        options[SelectedIndex].optionMethod();
+                        break;
+                    default:
+                        GameController.MenuController();
+                        break;
                 }
-                else if (key.Key == ConsoleKey.DownArrow)
-                {
-                    SelectedIndex++;
-                }else if (key.Key == ConsoleKey.Enter)
-                {
-                    int numberOfPlayers;
-                    switch (SelectedIndex)
-                    {
-                        case 0:
-                            numberOfPlayers = EnterIntValue(
-                                "Enter the number of players that will be partisipating in the game");
-                            GameController.SetupGame(numberOfPlayers);
-                            GameController.GameLoop();
-                            break;
-                        case 1: 
-                            //TODO: fix that game setup doesn't happen twice.
-                            numberOfPlayers = EnterIntValue(
-                                "Enter the number of players that will be partisipating in the game");
-                            GameController.SetupGame(numberOfPlayers);
-                            break;
-                        case 2:
-                            //TODO: Winers list in a file.
-                            throw new NotImplementedException();
-                            break;
-                    }
-                }
-            }
+            } while ( key.Key != ConsoleKey.Escape && menuLoopControl );
+            Menu.menuLoopControl = true;
         }
     }
 }

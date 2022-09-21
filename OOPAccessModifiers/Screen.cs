@@ -5,21 +5,21 @@ using System.Text;
 
 namespace OOPAccessModifiers
 {
-    public abstract class Screen
+    public class Screen
     {
-        protected Screen(string title, string body)
+        public Screen(string title, string body)
         {
             this.title = title;
             this.body = body;
         }
-        private readonly string title;
+        protected readonly string title;
         private readonly string body;
         internal virtual void Draw()
         {
             Console.Clear();
             Console.Title = title;
             Console.WriteLine("{0,"+ GetCenterPlacement(title).ToString() + "}\n", title);
-            Console.WriteLine("{0," + GetCenterPlacement(body).ToString() + "}", body);
+            Console.WriteLine("{0," + GetCenterPlacement(body).ToString() + "}", body); //TODO: maybe spilt string per newline.
         }
         protected int GetCenterPlacement(string text)
         {
@@ -45,6 +45,23 @@ namespace OOPAccessModifiers
                 }
             } while (!(int.TryParse(str, out number) && str != ""));
             return number;
+        }
+        protected string EnterStringValue(string promt)
+        {
+            string value = null;
+            do
+            {
+                try
+                {
+                    Console.WriteLine(promt);
+                    value = Console.ReadLine();
+                }
+                catch (NullReferenceException)
+                {
+                    Console.WriteLine("Please enter something in the console before hitting enter.");
+                }
+            } while (value == null);
+            return value;
         }
     }
 }
