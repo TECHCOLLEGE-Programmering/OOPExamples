@@ -10,11 +10,17 @@ namespace OOPAccessModifiers
     {
         private static List<Player> players = new List<Player>();
         private static bool GameDone = true;
+        private static int numberOfPlayers = 2;
         public static void GameLoop()
         {
             GameDone = false;
             while (!GameDone)
             {
+                if (players.Count < 2)
+                {
+                    Console.WriteLine("You have to setup the game before you can start."); //TODO: could throw an exception here.
+                    return;
+                }
                 foreach (Player player in players)
                 {
                     Card card = player.PlayCard();
@@ -47,42 +53,81 @@ namespace OOPAccessModifiers
         }
         public static void MenuController()
         {
-            List<string> menuOptions = new List<string>
-            { "Start Game", "Choose Players", "See Winers" };
-            Menu menu = new Menu("Game Menu", "here you can choose game mode and player", menuOptions);
-            menu.MenuControl();
+            List<Menuoption> menuOptions = new List<Menuoption>
+            {
+                new Menuoption(SetupGame, nameof(SetupGame)),
+                new Menuoption(GameLoop, nameof(GameLoop)),
+                new Menuoption(GetPlayerList, nameof(GetPlayerList))
+            };
+            Menu menu = new Menu(
+                "Main Menu", 
+                "here you can choose game mode and player", 
+                menuOptions);
+                menu.MenuControl();
         }
 
-        public static void SetupGame(int amountOfPlayers)
+        public static void SetupGame() //TODO: this should be a screen
         {
-            for (int i = 0; i < amountOfPlayers; i++)
+            DeckCreator deckCreator = new DeckCreator();
+            List<Menuoption> menuOptions = new List<Menuoption>
             {
-                do
+                new Menuoption(delegate ()
                 {
-                    try
-                    {
-                        Console.WriteLine("Enter the name of Player {0}", i + 1);
-                        players.Add(new Player(Console.ReadLine()));
-                    }
-                    catch (NullReferenceException)
-                    {
-                        Console.WriteLine("Please Enter a name in the console before hitting enter.");
-                    }
-                } while (players.Last().Name != null);
-            }
-            GameLoop();
+                    Player.Deck = deckCreator.FactoryMethodNormalDeck();
+                    Menu.menuLoopControl = false;
+                }, "Create A Normal Deck"),
+                new Menuoption(delegate ()
+                {
+                    Player.Deck = deckCreator.FactoryMethodAdvancedDeck();
+                    Menu.menuLoopControl = false;
+                }, "Create A Advanced Deck")
+            };
+            Menu menu = new Menu("Choose Deck Type", "Here you can choose what kinda of deck the game should use. Press ECS to Exit.", menuOptions);
+            menu.MenuControl();
+
+            PromtScreen screen = new PromtScreen("Name Players", "Here you can give each player a name for the game. The game needs 2 - 4 players.");
+            screen.Draw();
+            string name;
+            do
+            {
+                name = screen.PromtUser(String.Format("Enter the name of a player {0}.", players.Count + 1));
+                players.Add(new Player(name));
+                Console.WriteLine("Would you like to add another player. Press y/n.");
+                if (Console.ReadKey().Key != ConsoleKey.Y)
+                {
+                    Console.WriteLine();
+                    break;
+                }
+            } while (players.Count < 4);
         }
-        public static void ExcuteCard(Player player, Card playedCard)
+        public static void GetPlayerList()
         {
-            throw new System.NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            foreach (Player player in players)
+            {
+                if (player == players.Last())
+                {
+                    sb.Append(player.Name.ToString());
+                }
+                else
+                {
+                    sb.Append(player.Name.ToString() + ", ");
+                }
+            }
+            Screen screen = new Screen("Player List", sb.ToString());
+            screen.Draw();
+            Console.ReadLine();
         }
         private static void LogPlayerWin(Player player)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(player.Name); //TODO: flesh out log describtion, number of rounds after win?
-            // flush every 20 seconds as you do it
             File.AppendAllText("log.txt", sb.ToString());
             sb.Clear();
+        }
+        private static void ExcuteCard(Player player, Card playedCard)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
