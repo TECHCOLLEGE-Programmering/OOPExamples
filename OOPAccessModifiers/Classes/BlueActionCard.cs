@@ -7,6 +7,9 @@ namespace OOPAccessModifiers
 {
     internal class BlueActionCard : BlueCard, IActionable
     {
+        internal BlueActionCard() : base(0)
+        {
+        }
         public int Penalty()
         {
             //TODO: draw cards

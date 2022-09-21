@@ -7,6 +7,10 @@ namespace OOPAccessModifiers
 {
     internal class BlueCard : Card
     {
+        public BlueCard(uint number) : base(number)
+        {
+        }
+
         internal override bool ToCompare(Card otherCard)
         {
             bool isCardSamecolor = otherCard.GetType() == typeof(BlueCard);

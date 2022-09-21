@@ -7,6 +7,10 @@ namespace OOPAccessModifiers
 {
     internal class WildCard : Card, IActionable
     {
+        internal WildCard() : base(0)
+        {
+
+        }
         public int Penalty()
         {
             //TODO: draw cards if wildcard +4
@@ -14,7 +18,7 @@ namespace OOPAccessModifiers
         }
         internal override bool ToCompare(Card otherCard)
         {
-            throw new NotImplementedException(); //TODO: implemen a way to check for chosen color.
+            return true;
         }
     }
 }

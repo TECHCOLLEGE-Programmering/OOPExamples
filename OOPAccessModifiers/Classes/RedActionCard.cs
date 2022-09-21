@@ -7,6 +7,10 @@ namespace OOPAccessModifiers
 {
     internal class RedActionCard : RedCard, IActionable
     {
+        internal RedActionCard() : base(0)
+        {
+
+        }
         public int Penalty()
         {
             //TODO: draw cards
