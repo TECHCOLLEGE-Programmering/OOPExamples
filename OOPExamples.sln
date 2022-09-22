@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOPUNOExamples", "OOPAccessModifiers\OOPUNOExamples.csproj", "{3D8408F8-3578-4A1E-9A26-AEC4B13C0737}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOPUNOExamples", "OOPUNOExamples\OOPUNOExamples.csproj", "{D288876B-AB95-468A-B899-B91FBC2DA550}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3D8408F8-3578-4A1E-9A26-AEC4B13C0737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D8408F8-3578-4A1E-9A26-AEC4B13C0737}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D8408F8-3578-4A1E-9A26-AEC4B13C0737}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D8408F8-3578-4A1E-9A26-AEC4B13C0737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D288876B-AB95-468A-B899-B91FBC2DA550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D288876B-AB95-468A-B899-B91FBC2DA550}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D288876B-AB95-468A-B899-B91FBC2DA550}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D288876B-AB95-468A-B899-B91FBC2DA550}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {63219C30-8DF3-464D-A9A7-128A4D9AF6CD}
+		SolutionGuid = {391356B5-E57E-4EAB-BD86-6200401FF102}
 	EndGlobalSection
 EndGlobal
