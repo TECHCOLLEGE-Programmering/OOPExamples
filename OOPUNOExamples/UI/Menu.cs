@@ -58,7 +58,7 @@ namespace OOPAccessModifiers
             ConsoleKeyInfo key = new ConsoleKeyInfo();
             do {
                 Draw();
-                key = Console.ReadKey();
+                key = Console.ReadKey(true);
                 switch (key.Key)
                 {
                     case ConsoleKey.W:

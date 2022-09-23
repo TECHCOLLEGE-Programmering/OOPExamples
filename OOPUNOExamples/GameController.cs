@@ -65,7 +65,6 @@ namespace OOPAccessModifiers
                 menuOptions);
                 menu.MenuControl();
         }
-
         public static void SetupGame() //TODO: this should be a screen
         {
             DeckCreator deckCreator = new DeckCreator();
@@ -93,9 +92,8 @@ namespace OOPAccessModifiers
                 name = screen.PromtUser(String.Format("Enter the name of a player {0}.", players.Count + 1));
                 players.Add(new Player(name));
                 Console.WriteLine("Would you like to add another player. Press y/n.");
-                if (Console.ReadKey().Key != ConsoleKey.Y)
+                if (Console.ReadKey(true).Key != ConsoleKey.Y)
                 {
-                    Console.WriteLine();
                     break;
                 }
             } while (players.Count < 4);
@@ -124,10 +122,6 @@ namespace OOPAccessModifiers
             sb.AppendLine(player.Name); //TODO: flesh out log describtion, number of rounds after win?
             File.AppendAllText("log.txt", sb.ToString());
             sb.Clear();
-        }
-        private static void ExcuteCard(Player player, Card playedCard)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
