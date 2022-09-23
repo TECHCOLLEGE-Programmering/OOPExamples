@@ -13,7 +13,7 @@ namespace OOPAccessModifiers
             this.Name = name;
             CardsInHand = DrawCards(7);
         }
-        static private int IDCounter = 0;
+        private static int IDCounter = 0;
         internal int ID { get; private set; }
         internal string Name { get; private set; }
         private List<Card> CardsInHand = new List<Card>();

@@ -7,14 +7,14 @@ namespace OOPAccessModifiers
 {
     internal class RedActionCard : RedCard, IActionable
     {
+        public int Penalty()
+        {
+            //TODO: draw cards or skip turn.
+            throw new NotImplementedException();
+        }
         internal RedActionCard() : base(0)
         {
 
-        }
-        public int Penalty()
-        {
-            //TODO: draw cards
-            throw new NotImplementedException();
         }
     }
 }
