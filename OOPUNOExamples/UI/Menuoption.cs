@@ -10,7 +10,7 @@ namespace OOPAccessModifiers
     {
         internal Menuoption(OptionMethod optionMethod, string name)
         {
-            optionName = name;
+            this.optionName = name;
             this.optionMethod = optionMethod;
         }
         private readonly string optionName;
