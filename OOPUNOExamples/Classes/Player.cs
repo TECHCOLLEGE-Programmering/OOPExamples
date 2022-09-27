@@ -29,9 +29,65 @@ namespace OOPAccessModifiers
             {
             }
         }
+        private void PrintCardsInHand()
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < CardsInHand.Count; i++)
+            {
+                if (CardsInHand[i] == CardsInHand.Last())
+                {
+                    sb.AppendFormat("{0}: {1}.", i, CardsInHand[i].ToString());
+                }
+                else
+                {
+                    sb.AppendFormat("{0}: {1}, ", i, CardsInHand[i].ToString());
+                }
+            }
+            Console.WriteLine(sb.ToString());
+        }
         internal Card PlayCard()
         {
-            throw new NotImplementedException();
+            PrintCardsInHand(); //TODO: maybe should be screen
+            //get int index that is in list and pick card
+            Card card = null;
+            int cardIndex = -1;
+            while (cardIndex >= 0 || card == null)
+            {
+                try
+                {
+                    cardIndex = int.Parse(Console.ReadLine());
+                    card = CardsInHand[cardIndex];
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.WriteLine("Please write a number from the list");
+                    Console.WriteLine(ex);
+                }
+                catch (ArgumentNullException ex)
+                {
+                    Console.WriteLine("Please write a number from the list");
+                    Console.WriteLine(ex);
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Please write a number from the list");
+                    Console.WriteLine(ex);
+                }
+            }
+            //check if card fits
+            bool LigalPlayAnd = card.ToCompare(Deck.DiscardPile.GetTopCard());
+            bool IsInHand = CardsInHand.Remove(card);
+            if (LigalPlayAnd && IsInHand)
+            {
+                Deck.DiscardPile.AddCard(card);
+            }
+            else
+            {
+                //TODO: what to do and better message.
+                Console.WriteLine(LigalPlayAnd.ToString() + " " + LigalPlayAnd.ToString());
+            }
+            //else try again
+            return card;
         }
         internal Card DrawCard()
         {

@@ -13,6 +13,7 @@ namespace OOPAccessModifiers
         private static int numberOfPlayers = 2;
         public static void GameLoop()
         {
+            //TODO: First player plays a card
             GameDone = false;
             while (!GameDone)
             {
