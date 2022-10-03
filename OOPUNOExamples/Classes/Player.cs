@@ -11,7 +11,7 @@ namespace OOPAccessModifiers
         {
             ID = IDCounter++;
             this.Name = name;
-            CardsInHand = DrawCards(7);
+            DrawCards(7);
         }
         private static int IDCounter = 0;
         internal int ID { get; private set; }
@@ -36,32 +36,36 @@ namespace OOPAccessModifiers
             {
                 if (CardsInHand[i] == CardsInHand.Last())
                 {
-                    sb.AppendFormat("{0}: {1}.", i, CardsInHand[i].ToString());
+                    sb.AppendFormat("{0}: {1}", i, CardsInHand[i].ToString());
                 }
                 else
                 {
-                    sb.AppendFormat("{0}: {1}, ", i, CardsInHand[i].ToString());
+                    sb.AppendFormat("{0}: {1}\n", i, CardsInHand[i].ToString());
                 }
             }
             Console.WriteLine(sb.ToString());
         }
-        internal Card PlayCard()
+        private Card ChooseCard()
         {
+            string topCard = Deck.DiscardPile.GetTopCard().ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("The top card {0} \n", topCard);
+            Console.WriteLine(sb.ToString());
+
             PrintCardsInHand(); //TODO: maybe should be screen
-            //get int index that is in list and pick card
-            Card card = null;
+                                //get int index that is in list and pick card
+            Console.WriteLine("If there are no card that you can or want to play press 0.");
             int cardIndex = -1;
-            while (cardIndex >= 0 || card == null)
+            while(true)
             {
                 try
                 {
                     cardIndex = int.Parse(Console.ReadLine());
-                    card = CardsInHand[cardIndex];
+                    return CardsInHand[cardIndex];
                 }
                 catch (IndexOutOfRangeException ex)
                 {
-                    Console.WriteLine("Please write a number from the list");
-                    Console.WriteLine(ex);
+                    return null;
                 }
                 catch (ArgumentNullException ex)
                 {
@@ -74,19 +78,29 @@ namespace OOPAccessModifiers
                     Console.WriteLine(ex);
                 }
             }
-            //check if card fits
-            bool LigalPlayAnd = card.ToCompare(Deck.DiscardPile.GetTopCard());
-            bool IsInHand = CardsInHand.Remove(card);
-            if (LigalPlayAnd && IsInHand)
+        }
+        internal Card PlayCard()
+        {
+            Card card = null;
+            bool success = false;
+            card = ChooseCard();
+            while (!success)
             {
-                Deck.DiscardPile.AddCard(card);
+                //check if card fits
+                bool LigalPlayAnd = card.ToCompare(Deck.DiscardPile.GetTopCard());
+                bool IsInHand = CardsInHand.Remove(card);
+                if (LigalPlayAnd && IsInHand)
+                {
+                    Deck.DiscardPile.AddCard(card);
+                    success = card != null;
+                }
+                else
+                {
+                    //TODO: what to do and better message.
+                    Console.WriteLine(LigalPlayAnd.ToString() + " " + LigalPlayAnd.ToString());
+                    success = false;
+                }
             }
-            else
-            {
-                //TODO: what to do and better message.
-                Console.WriteLine(LigalPlayAnd.ToString() + " " + LigalPlayAnd.ToString());
-            }
-            //else try again
             return card;
         }
         internal Card DrawCard()
