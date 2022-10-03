@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace OOPAccessModifiers
 {
@@ -13,7 +14,6 @@ namespace OOPAccessModifiers
         private static int numberOfPlayers = 2;
         public static void GameLoop()
         {
-            //TODO: First player plays a card
             GameDone = false;
             while (!GameDone)
             {
@@ -56,6 +56,7 @@ namespace OOPAccessModifiers
         {
             List<Menuoption> menuOptions = new List<Menuoption>
             {
+                new Menuoption(DebugSetupGame, nameof(DebugSetupGame)),
                 new Menuoption(SetupGame, nameof(SetupGame)),
                 new Menuoption(GameLoop, nameof(GameLoop)),
                 new Menuoption(GetPlayerList, nameof(GetPlayerList))
@@ -98,6 +99,15 @@ namespace OOPAccessModifiers
                     break;
                 }
             } while (players.Count < 4);
+        }
+        public static void DebugSetupGame() //TODO: this should be a screen
+        {
+
+            DeckCreator deckCreator = new DeckCreator();
+            Player.Deck = deckCreator.FactoryMethodNormalDeck();
+
+            players.Add(new Player("lkri"));
+            players.Add(new Player("sinb"));
         }
         public static void GetPlayerList()
         {
