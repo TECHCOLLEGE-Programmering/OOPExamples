@@ -15,22 +15,33 @@ namespace OOPAccessModifiers
             Deck deck = new Deck();
             foreach (uint number in numberRange)
             {
-                deck.DeckOfCards.Add(new RedCard(number));
+                deck.Cards.Add(new RedCard(number));
             }
             foreach (uint number in numberRange)
             {
-                deck.DeckOfCards.Add(new BlueCard(number));
+                deck.Cards.Add(new BlueCard(number));
             }
             foreach(Card card in FactoryMethodSpecialCard(amountOfPenaltyCards, 1))
             {
-                deck.DeckOfCards.Add(card);
+                deck.Cards.Add(card);
             }
             foreach (Card card in FactoryMethodSpecialCard(amountOfPenaltyCards, 2))
             {
-                deck.DeckOfCards.Add(card);
+                deck.Cards.Add(card);
             }
             var rnd = new Random();
-            deck.DeckOfCards.OrderBy(item => rnd.Next());
+            deck.Cards.OrderBy(item => rnd.Next());
+
+            foreach (Card card in deck.Cards)
+            {
+                IActionable IaCard = card as IActionable;
+                if (IaCard == null)
+                {
+                    deck.DiscardPile.AddCard(card);
+                    break;
+                }
+            }
+
             return deck;
         }
         internal Deck FactoryMethodAdvancedDeck()
@@ -38,7 +49,7 @@ namespace OOPAccessModifiers
             Deck deck = new Deck();
             throw new System.NotImplementedException();
             var rnd = new Random();
-            deck.DeckOfCards.OrderBy(item => rnd.Next());
+            deck.Cards.OrderBy(item => rnd.Next());
             return deck;
         }
         /// <summary>
