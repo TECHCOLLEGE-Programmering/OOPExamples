@@ -13,7 +13,7 @@ The project is structured with folders for Classes for the domain model and UI C
 There is a class diagram in a .cd fil, so it is specific to Visual Studio on Windows. 
 
 The project demostrats use of:
-- Inheiritance/Generalisation
+- Inheiritance / Generalisation
 - Polymorfisim
 - Collections
 - Interfaces
