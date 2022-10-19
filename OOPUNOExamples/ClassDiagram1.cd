@@ -1,148 +1,180 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="OOPAccessModifiers.Card">
-    <Position X="7.5" Y="0.5" Width="1.5" />
+  <Comment CommentText="Interface til at styre visablilty af deck, DiscardPile, Hand&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+    <Position X="0.5" Y="4.167" Height="2.421" Width="1.7" />
+  </Comment>
+  <Class Name="OOPUNOExamples.Classes.Card">
+    <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQQAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Card.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPAccessModifiers.Deck">
+  <Class Name="OOPUNOExamples.Classes.Deck">
     <Position X="5.25" Y="0.5" Width="1.5" />
-    <AssociationLine Name="Cards" Type="OOPAccessModifiers.Card" FixedToPoint="true">
+    <AssociationLine Name="Cards" Type="OOPUNOExamples.Classes.Card" FixedToPoint="true">
       <Path>
-        <Point X="6.75" Y="0.875" />
-        <Point X="7.5" Y="0.875" />
+        <Point X="6.75" Y="1.75" />
+        <Point X="9.5" Y="1.75" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAAAEAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAABAAAAAAAEAA=</HashCode>
       <FileName>Classes\Deck.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Field Name="Cards" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="OOPAccessModifiers.Player">
-    <Position X="2.75" Y="0.5" Width="1.75" />
-    <AssociationLine Name="Deck" Type="OOPAccessModifiers.Deck" FixedFromPoint="true">
-      <Path>
-        <Point X="4.5" Y="0.938" />
-        <Point X="5.25" Y="0.938" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.112" Y="0.089" />
-      </MemberNameLabel>
-    </AssociationLine>
+  <Class Name="OOPUNOExamples.Classes.Player">
+    <Position X="3.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAkAAAAAAAAAQAkAAAAAAAAABAEAAAAAI=</HashCode>
+      <HashCode>BAAAAIAAAAAAkAAAAAAAAAQAkAAAAAAAAABAEAACAAI=</HashCode>
       <FileName>Classes\Player.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="Deck" />
-    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Field Name="CardsInHand" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="OOPAccessModifiers.GameController">
+  <Class Name="OOPUNOExamples.GameController">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAAAAAAQAAAAAgAAAAAAAEIAAAQACAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAQAAAAAAQAAAAAgAAACAAAAICAAQACAgAA=</HashCode>
       <FileName>GameController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPAccessModifiers.Screen">
-    <Position X="12" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAgAAIAAABAAAEQAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Screen.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OOPAccessModifiers.Menu">
+  <Class Name="OOPUNOExamples.UI.Screen">
     <Position X="14.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAAgAAAQAAIAAAAAAAgAAAAIAAAAAAAAA=</HashCode>
-      <FileName>Menu.cs</FileName>
+      <HashCode>AAAAAAAAQAAAAgAAIAAABAAAEQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Screen.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPAccessModifiers.BlueCard">
-    <Position X="5.25" Y="2.75" Width="1.5" />
+  <Class Name="OOPUNOExamples.Classes.BlueCard">
+    <Position X="8.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\BlueCard.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPAccessModifiers.RedCard">
-    <Position X="7.5" Y="2.75" Width="1.5" />
+  <Class Name="OOPUNOExamples.Classes.RedCard">
+    <Position X="10.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\RedCard.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPAccessModifiers.BlueActionCard">
-    <Position X="5.25" Y="4.5" Width="1.5" />
+  <Class Name="OOPUNOExamples.Classes.BlueActionCard">
+    <Position X="8.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\BlueActionCard.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.888" />
+    <Lollipop Position="0.94" />
   </Class>
-  <Class Name="OOPAccessModifiers.RedActionCard">
-    <Position X="7.5" Y="4.5" Width="1.5" />
-    <InheritanceLine Type="OOPAccessModifiers.RedCard" FixedFromPoint="true">
-      <Path>
-        <Point X="8.25" Y="4.175" />
-        <Point X="8.25" Y="4.5" />
-      </Path>
-    </InheritanceLine>
+  <Class Name="OOPUNOExamples.Classes.RedActionCard">
+    <Position X="10.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\RedActionCard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.94" />
   </Class>
-  <Class Name="OOPAccessModifiers.WildCard">
-    <Position X="9.75" Y="2.75" Width="1.5" />
+  <Class Name="OOPUNOExamples.Classes.WildCard">
+    <Position X="12.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\WildCard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.94" />
   </Class>
-  <Class Name="OOPAccessModifiers.DeckCreator">
-    <Position X="0.5" Y="4" Width="1.5" />
+  <Class Name="OOPUNOExamples.DeckCreator">
+    <Position X="11.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAACAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>DeckCreator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPAccessModifiers.Menuoption" Collapsed="true">
-    <Position X="14.25" Y="3.75" Width="1.5" />
+  <Class Name="OOPUNOExamples.UI.MenuOption" Collapsed="true">
+    <Position X="16" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAACAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Menuoption.cs</FileName>
+      <FileName>UI\Menuoption.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPAccessModifiers.PromtScreen">
-    <Position X="12" Y="3.75" Width="1.5" />
+  <Class Name="OOPUNOExamples.UI.PromtScreen">
+    <Position X="16" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
-      <FileName>PromtScreen.cs</FileName>
+      <FileName>UI\PromtScreen.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="OOPAccessModifiers.IActionable">
-    <Position X="2.75" Y="4.5" Width="1.75" />
+  <Class Name="OOPUNOExamples.Classes.DiscardPile">
+    <Position X="5.25" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Cards" Type="OOPUNOExamples.Classes.Card" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="2.938" />
+        <Point X="9.75" Y="2.938" />
+        <Point X="9.75" Y="2.44" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAIAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\DiscardPile.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Cards" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OOPUNOExamples.Classes.CardCollection">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <AssociationLine Name="Cards" Type="OOPUNOExamples.Classes.Card" FixedFromPoint="true">
+      <Path>
+        <Point X="8.75" Y="0.875" />
+        <Point X="9.5" Y="0.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\CardCollection.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Cards" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OOPUNOExamples.UI.CardMenuOption" Collapsed="true">
+    <Position X="16" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\CardMenuOption.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OOPUNOExamples.UI.Menu">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAgAAAQAAIAAAAAAAgAAAAIAAAAAAAAA=</HashCode>
+      <FileName>UI\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="OOPUNOExamples.IActionable">
+    <Position X="12.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IActionable.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Delegate Name="OOPAccessModifiers.OptionMethod" Collapsed="true">
-    <Position X="14.25" Y="4.5" Width="1.5" />
+  <Delegate Name="OOPUNOExamples.UI.OptionMethod" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Menuoption.cs</FileName>
+      <FileName>UI\Menuoption.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="OOPUNOExamples.UI.CardOptionMethod" Collapsed="true">
+    <Position X="17.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>UI\CardMenuOption.cs</FileName>
     </TypeIdentifier>
   </Delegate>
   <Font Name="Segoe UI" Size="9" />
