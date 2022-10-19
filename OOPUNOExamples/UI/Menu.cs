@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OOPAccessModifiers
+namespace OOPUNOExamples.UI
 {
     public class Menu : Screen
     {
-        internal Menu(string title, string body, List<Menuoption> options) : base(title, body)
+        internal Menu(string title, string body, List<MenuOption> options) : base(title, body)
         {
-            this.options = options ?? new List<Menuoption>();
+            this.options = options ?? new List<MenuOption>();
             if (this.title != "Main Menu" && !this.title.Contains("Choose"))
             {
-                this.options.Add(new Menuoption(() => Menu.menuLoopControl = false, "Back"));
+                this.options.Add(new MenuOption("Back", () => Menu.menuLoopControl = false));
             }
-            this.options.Add(new Menuoption(() => Environment.Exit(0), "Exit Game"));
+            this.options.Add(new MenuOption("Exit Game", () => Environment.Exit(0)));
             SelectedIndex = 0;
         }
-        private List<Menuoption> options;
+        private List<MenuOption> options;
+        internal static bool menuLoopControl = true; //TODO: Maybe should be static
         private int selectedIndex;
         private int SelectedIndex 
         {
@@ -26,7 +27,7 @@ namespace OOPAccessModifiers
             {
                 try
                 {
-                    string s = options[value].ToString();
+                    options[value].ToString();
                     this.selectedIndex = value;
                 } catch (ArgumentOutOfRangeException)
                 {
@@ -34,7 +35,6 @@ namespace OOPAccessModifiers
                 }
             }
         }
-        internal static bool menuLoopControl = true;
         internal override void Draw()
         {
             base.Draw();
@@ -70,7 +70,7 @@ namespace OOPAccessModifiers
                         SelectedIndex++;
                         break;
                     case ConsoleKey.Enter:
-                        options[SelectedIndex].optionMethod();
+                        options[SelectedIndex].optionMethod(); //TODO: What if it just returns the metod or object?
                         break;
                     default:
                         GameController.MenuController();
