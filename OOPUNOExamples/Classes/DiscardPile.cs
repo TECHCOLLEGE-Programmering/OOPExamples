@@ -1,32 +1,31 @@
-﻿using OOPAccessModifiers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OOPUNOExamples
+namespace OOPUNOExamples.Classes
 {
     internal class DiscardPile
     {
         internal DiscardPile(Card topCard)
         {
-            this.DiscardCards = new List<Card>();
-            this.DiscardCards.Add(topCard);
+            this.Cards = new List<Card>();
+            this.Cards.Add(topCard);
         }
         internal DiscardPile()
         {
-            this.DiscardCards = new List<Card>();
+            this.Cards = new List<Card>();
         }
-        internal List<Card> DiscardCards;
+        internal List<Card> Cards;
 
         internal Card GetTopCard()
         {
-            return DiscardCards.Last();
+            return Cards.Last();
         }
 
         internal void AddCard(Card card)
         {
-            DiscardCards.Add(card);
+            Cards.Add(card);
         }
     }
 }
