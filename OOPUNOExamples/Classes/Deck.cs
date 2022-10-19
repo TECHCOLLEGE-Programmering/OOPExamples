@@ -5,28 +5,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OOPAccessModifiers
+namespace OOPUNOExamples.Classes
 {
     internal class Deck
     {
-        internal List<Card> DeckOfCards = new List<Card>();
+        internal List<Card> Cards = new List<Card>();
         internal DiscardPile DiscardPile = new DiscardPile();
         internal Card DealCard()
         {
             Card topCard;
             try
             {
-                topCard = DeckOfCards.Last();
+                topCard = Cards.Last();
                 
-            } catch (NullReferenceException)
+            }
+            catch (NullReferenceException)
             {
                 Console.WriteLine("Shuffling dicard pile, except for top card...");
                 Shuffle();
             }
             finally
             {
-                topCard = DeckOfCards.Last();
-                DeckOfCards.Remove(topCard);
+                topCard = Cards.Last();
+                Cards.Remove(topCard);
             }
             return topCard;
         }
@@ -36,10 +37,10 @@ namespace OOPAccessModifiers
         private void Shuffle()
         {
             Card TopCard = DiscardPile.GetTopCard();
-            DiscardPile.DiscardCards.Remove(TopCard);
-            DeckOfCards.AddRange(DiscardPile.DiscardCards);
+            DiscardPile.Cards.Remove(TopCard);
+            Cards.AddRange(DiscardPile.Cards);
             var rnd = new Random();
-            DeckOfCards.OrderBy(item => rnd.Next());
+            Cards.OrderBy(item => rnd.Next());
             DiscardPile = new DiscardPile();
         }
     }

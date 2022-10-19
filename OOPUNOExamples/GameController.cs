@@ -1,13 +1,15 @@
-﻿using System;
+﻿using OOPUNOExamples.Classes;
+using OOPUNOExamples.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace OOPAccessModifiers
+namespace OOPUNOExamples
 {
-    internal static class GameController
+    internal static class GameController //TODO: Make MVC
     {
         private static List<Player> players = new List<Player>();
         private static bool GameDone = true;
@@ -54,34 +56,35 @@ namespace OOPAccessModifiers
         }
         public static void MenuController()
         {
-            List<Menuoption> menuOptions = new List<Menuoption>
+            List<MenuOption> menuOptions = new List<MenuOption>
             {
-                new Menuoption(DebugSetupGame, nameof(DebugSetupGame)),
-                new Menuoption(SetupGame, nameof(SetupGame)),
-                new Menuoption(GameLoop, nameof(GameLoop)),
-                new Menuoption(GetPlayerList, nameof(GetPlayerList))
+                new MenuOption(nameof(DebugSetupGame), DebugSetupGame),
+                new MenuOption(nameof(SetupGame), SetupGame),
+                new MenuOption(nameof(GameLoop), GameLoop),
+                new MenuOption(nameof(GetPlayerList), GetPlayerList)
             };
             Menu menu = new Menu(
                 "Main Menu", 
                 "here you can choose game mode and player", 
                 menuOptions);
-                menu.MenuControl();
+
+            menu.MenuControl();
         }
         public static void SetupGame() //TODO: this should be a screen
         {
             DeckCreator deckCreator = new DeckCreator();
-            List<Menuoption> menuOptions = new List<Menuoption>
+            List<MenuOption> menuOptions = new List<MenuOption>
             {
-                new Menuoption(delegate ()
+                new MenuOption("Create A Normal Deck", delegate ()
                 {
                     Player.Deck = deckCreator.FactoryMethodNormalDeck();
                     Menu.menuLoopControl = false;
-                }, "Create A Normal Deck"),
-                new Menuoption(delegate ()
+                }),
+                new MenuOption("Create A Advanced Deck", delegate ()
                 {
                     Player.Deck = deckCreator.FactoryMethodAdvancedDeck();
                     Menu.menuLoopControl = false;
-                }, "Create A Advanced Deck")
+                })
             };
             Menu menu = new Menu("Choose Deck Type", "Here you can choose what kinda of deck the game should use. Press ECS to Exit.", menuOptions);
             menu.MenuControl();

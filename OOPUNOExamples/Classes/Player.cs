@@ -1,9 +1,12 @@
-﻿using System;
+﻿using OOPUNOExamples;
+using OOPUNOExamples.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
-namespace OOPAccessModifiers
+namespace OOPUNOExamples.Classes
 {
     internal class Player
     {
@@ -32,7 +35,7 @@ namespace OOPAccessModifiers
         private void PrintCardsInHand()
         {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < CardsInHand.Count; i++)
+            for (int i = 1; i < CardsInHand.Count; i++)
             {
                 if (CardsInHand[i] == CardsInHand.Last())
                 {
@@ -47,37 +50,26 @@ namespace OOPAccessModifiers
         }
         private Card ChooseCard()
         {
+            Card chosenCard = null;
+            Card cardObj = null;
+
             string topCard = Deck.DiscardPile.GetTopCard().ToString();
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("The top card {0} \n", topCard);
-            Console.WriteLine(sb.ToString());
+            sb.AppendFormat("The top card {0}; ", topCard);
+            sb.Append("If there are no card that you can or want to play press 0.");
 
-            PrintCardsInHand(); //TODO: maybe should be screen
-                                //get int index that is in list and pick card
-            Console.WriteLine("If there are no card that you can or want to play press 0.");
-            int cardIndex = -1;
-            while(true)
+            List<MenuOption> menuOptions = new List<MenuOption>();
+            for (int i = 0; i < CardsInHand.Count; i++)
             {
-                try
-                {
-                    cardIndex = int.Parse(Console.ReadLine());
-                    return CardsInHand[cardIndex];
-                }
-                catch (IndexOutOfRangeException ex)
-                {
-                    return null;
-                }
-                catch (ArgumentNullException ex)
-                {
-                    Console.WriteLine("Please write a number from the list");
-                    Console.WriteLine(ex);
-                }
-                catch (FormatException ex)
-                {
-                    Console.WriteLine("Please write a number from the list");
-                    Console.WriteLine(ex);
-                }
+                cardObj = CardsInHand[i];
+                menuOptions.Add(
+                    new CardMenuOption(
+                        string.Format("{0}: {1}", i + 1, CardsInHand[i].ToString()),
+                        (out Card chosenCard, Card cardObj) => chosenCard = cardObj)); //TODO: Is there a better way
             }
+            Menu menu = new Menu(Name, sb.ToString(), menuOptions);
+            menu.MenuControl();
+            return chosenCard;
         }
         internal Card PlayCard()
         {
