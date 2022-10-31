@@ -8,7 +8,7 @@ namespace OOPUNOExamples.UI
     internal delegate void OptionMethod();
     internal class MenuOption
     {
-        internal MenuOption(string name)
+        protected MenuOption(string name)
         {
             this.optionName = name;
         }
@@ -18,7 +18,7 @@ namespace OOPUNOExamples.UI
             this.optionName = name;
         }
         protected readonly string optionName;
-        internal OptionMethod optionMethod { get; set; }
+        internal readonly OptionMethod optionMethod;
         internal new string ToString()
         {
             return optionName;
