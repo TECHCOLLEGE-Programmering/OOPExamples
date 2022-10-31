@@ -12,7 +12,13 @@ namespace OOPUNOExamples.Classes
             this.number = number;
         }
         internal uint number;
-        internal abstract bool ToCompare(Card otherCard);
+        internal virtual bool ToCompare(Card otherCard)
+        {
+            bool isCardSamecolor = otherCard.GetType() == this.GetType();
+            bool isCardSameNumber = this.number == otherCard.number;
+            bool isWildCard = otherCard.GetType() == typeof(WildCard);
+            return isCardSamecolor || isCardSameNumber || isWildCard;
+        }
         public new virtual string ToString()
         {
             StringBuilder sb = new StringBuilder();
