@@ -7,9 +7,8 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    internal class Deck
+    internal class Deck : CardCollection
     {
-        internal List<Card> Cards = new List<Card>();
         internal DiscardPile DiscardPile = new DiscardPile();
         internal Card DealCard()
         {
@@ -17,7 +16,7 @@ namespace OOPUNOExamples.Classes
             try
             {
                 topCard = Cards.Last();
-                
+
             }
             catch (NullReferenceException)
             {

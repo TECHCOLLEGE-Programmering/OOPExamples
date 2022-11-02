@@ -8,7 +8,7 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    internal class Player
+    internal class Player : CardCollection
     {
         internal Player(string name)
         {
@@ -19,10 +19,9 @@ namespace OOPUNOExamples.Classes
         private static int IDCounter = 0;
         internal int ID { get; private set; }
         internal string Name { get; private set; }
-        private List<Card> CardsInHand = new List<Card>();
         internal int GetHandSize()
         {
-            return CardsInHand.Count;
+            return Cards.Count;
         }
         internal static Deck Deck;
         internal bool Uno
@@ -35,15 +34,15 @@ namespace OOPUNOExamples.Classes
         private void PrintCardsInHand()
         {
             StringBuilder sb = new StringBuilder();
-            for (int i = 1; i < CardsInHand.Count; i++)
+            for (int i = 1; i < Cards.Count; i++)
             {
-                if (CardsInHand[i] == CardsInHand.Last())
+                if (Cards[i] == Cards.Last())
                 {
-                    sb.AppendFormat("{0}: {1}", i, CardsInHand[i].ToString());
+                    sb.AppendFormat("{0}: {1}", i, Cards[i].ToString());
                 }
                 else
                 {
-                    sb.AppendFormat("{0}: {1}\n", i, CardsInHand[i].ToString());
+                    sb.AppendFormat("{0}: {1}\n", i, Cards[i].ToString());
                 }
             }
             Console.WriteLine(sb.ToString());
@@ -58,7 +57,7 @@ namespace OOPUNOExamples.Classes
             sb.AppendFormat("The top card {0}; ", topCard);
             sb.Append("If there are no card that you can or want to play press 0.");
 
-            CardMenu menu = new CardMenu(Name, sb.ToString(), CardsInHand);
+            CardMenu menu = new CardMenu(Name, sb.ToString(), Cards);
             chosenCard = menu.MenuControl();
             return chosenCard;
         }
@@ -72,7 +71,7 @@ namespace OOPUNOExamples.Classes
                 try
                 {
                     bool LigalPlay = card.ToCompare(Deck.DiscardPile.GetTopCard());
-                    bool IsInHand = CardsInHand.Remove(card);
+                    bool IsInHand = Cards.Remove(card);
                     if (LigalPlay && IsInHand)
                     {
                         Deck.DiscardPile.AddCard(card);
@@ -82,7 +81,7 @@ namespace OOPUNOExamples.Classes
                     else
                     {
                         //TODO: what to do and better message
-                        CardsInHand.Add(card);
+                        Cards.Add(card);
                         Console.WriteLine(LigalPlay.ToString() + " " + LigalPlay.ToString());
                         success = false;
                     }
@@ -97,7 +96,7 @@ namespace OOPUNOExamples.Classes
         internal Card DrawCard()
         {
             Card topCard = Deck.DealCard();
-            this.CardsInHand.Add(topCard);
+            this.Cards.Add(topCard);
             return topCard;
         }
         internal List<Card> DrawCards(int Amount)

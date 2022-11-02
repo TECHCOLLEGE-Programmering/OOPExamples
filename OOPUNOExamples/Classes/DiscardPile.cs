@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    internal class DiscardPile
+    internal class DiscardPile : CardCollection
     {
         internal DiscardPile(Card topCard)
         {
@@ -16,7 +16,6 @@ namespace OOPUNOExamples.Classes
         {
             this.Cards = new List<Card>();
         }
-        internal List<Card> Cards;
 
         internal Card GetTopCard()
         {
