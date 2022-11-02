@@ -14,12 +14,12 @@ namespace OOPUNOExamples.Classes
         internal uint number;
         internal virtual bool ToCompare(Card otherCard)
         {
-            bool isCardSamecolor = otherCard.GetType() == this.GetType();
-            bool isCardSameNumber = this.number == otherCard.number;
-            bool isWildCard = otherCard.GetType() == typeof(WildCard);
+            bool isCardSamecolor = otherCard.GetType() == this.GetType() || otherCard.GetType().IsSubclassOf(this.GetType()) || this.GetType().IsSubclassOf(otherCard.GetType());
+            bool isCardSameNumber = otherCard.number == this.number;
+            bool isWildCard = otherCard.GetType() == typeof(WildCard) || otherCard.GetType().IsSubclassOf(typeof(WildCard));
             return isCardSamecolor || isCardSameNumber || isWildCard;
         }
-        public new virtual string ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(this.GetType());

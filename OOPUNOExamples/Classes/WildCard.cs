@@ -11,9 +11,13 @@ namespace OOPUNOExamples.Classes
         {
 
         }
-        public int Penalty()
+        int IActionable.Penalty()
         {
             //TODO: draw cards if wildcard +4
+            throw new NotImplementedException();
+        }
+        int IActionable.GetNumber()
+        {
             throw new NotImplementedException();
         }
         internal override bool ToCompare(Card otherCard)

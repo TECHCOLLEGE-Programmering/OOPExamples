@@ -10,9 +10,13 @@ namespace OOPUNOExamples.Classes
         internal BlueActionCard() : base(0)
         {
         }
-        public int Penalty()
+        int IActionable.Penalty()
         {
             //TODO: draw cards
+            throw new NotImplementedException();
+        }
+        int IActionable.GetNumber()
+        {
             throw new NotImplementedException();
         }
     }
