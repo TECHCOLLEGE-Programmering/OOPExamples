@@ -89,7 +89,7 @@ namespace OOPUNOExamples.Classes
                 }
                 catch (NullReferenceException)
                 {
-                    return card;
+                    success = true;
                 }
             }
             return card;
