@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OOPAccessModifiers
+namespace OOPUNOExamples.UI
 {
     public class Screen
     {
@@ -18,15 +18,15 @@ namespace OOPAccessModifiers
         {
             Console.Clear();
             Console.Title = title;
-            Console.WriteLine("{0,"+ GetCenterPlacement(title).ToString() + "}\n", title);
-            Console.WriteLine("{0," + GetCenterPlacement(body).ToString() + "}", body); //TODO: maybe spilt string per newline.
+            Console.WriteLine("{0,"+ GetCenterPlacement(title) + "}\n", title);
+            Console.WriteLine("{0," + GetCenterPlacement(body) + "}", body); //TODO: maybe spilt string per newline.
         }
-        protected int GetCenterPlacement(string text)
+        protected string GetCenterPlacement(string text)
         {
             int width = Console.WindowWidth;
             int textWidth = text.Length;
             int centerPlacement = width / 2 + textWidth / 2 + 1;
-            return centerPlacement;
+            return centerPlacement.ToString();
         }
         protected int EnterIntValue(string promt)
         {

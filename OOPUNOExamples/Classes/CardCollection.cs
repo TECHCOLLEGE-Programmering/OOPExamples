@@ -5,8 +5,8 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    internal class BlueCard : Card
+    public class CardCollection
     {
-        public BlueCard(uint number) : base(number) { }
+        private List<Card> Cards;
     }
 }

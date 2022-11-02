@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OOPAccessModifiers
+namespace OOPUNOExamples.UI
 {
     internal delegate void OptionMethod();
-    internal class Menuoption
+    internal class MenuOption
     {
-        internal Menuoption(OptionMethod optionMethod, string name)
+        protected MenuOption(string name)
         {
             this.optionName = name;
-            this.optionMethod = optionMethod;
         }
-        private readonly string optionName;
+        internal MenuOption(string name, OptionMethod optionMethod)
+        {
+            this.optionMethod = optionMethod;
+            this.optionName = name;
+        }
+        protected readonly string optionName;
         internal readonly OptionMethod optionMethod;
-        internal new string ToString()
+        public override string ToString()
         {
             return optionName;
         }

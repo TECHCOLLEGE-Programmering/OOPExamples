@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OOPAccessModifiers
+namespace OOPUNOExamples.Classes
 {
     internal class WildCard : Card, IActionable
     {
@@ -11,9 +11,13 @@ namespace OOPAccessModifiers
         {
 
         }
-        public int Penalty()
+        int IActionable.Penalty()
         {
             //TODO: draw cards if wildcard +4
+            throw new NotImplementedException();
+        }
+        int IActionable.GetNumber()
+        {
             throw new NotImplementedException();
         }
         internal override bool ToCompare(Card otherCard)

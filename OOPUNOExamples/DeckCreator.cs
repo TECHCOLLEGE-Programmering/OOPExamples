@@ -1,10 +1,11 @@
-﻿using System;
+﻿using OOPUNOExamples.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace OOPAccessModifiers
+namespace OOPUNOExamples
 {
     internal class DeckCreator
     {
@@ -29,12 +30,27 @@ namespace OOPAccessModifiers
             {
                 deck.Cards.Add(card);
             }
+            var rnd = new Random();
+            deck.Cards.OrderBy(item => rnd.Next());
+
+            foreach (Card card in deck.Cards)
+            {
+                IActionable IaCard = card as IActionable;
+                if (IaCard == null)
+                {
+                    deck.DiscardPile.AddCard(card);
+                    break;
+                }
+            }
+
             return deck;
         }
         internal Deck FactoryMethodAdvancedDeck()
         {
             Deck deck = new Deck();
             throw new System.NotImplementedException();
+            var rnd = new Random();
+            deck.Cards.OrderBy(item => rnd.Next());
             return deck;
         }
         /// <summary>

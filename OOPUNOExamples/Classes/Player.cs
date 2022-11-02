@@ -1,9 +1,12 @@
-﻿using System;
+﻿using OOPUNOExamples;
+using OOPUNOExamples.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
-namespace OOPAccessModifiers
+namespace OOPUNOExamples.Classes
 {
     internal class Player
     {
@@ -11,7 +14,7 @@ namespace OOPAccessModifiers
         {
             ID = IDCounter++;
             this.Name = name;
-            CardsInHand = DrawCards(7);
+            DrawCards(7);
         }
         private static int IDCounter = 0;
         internal int ID { get; private set; }
@@ -29,9 +32,67 @@ namespace OOPAccessModifiers
             {
             }
         }
+        private void PrintCardsInHand()
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 1; i < CardsInHand.Count; i++)
+            {
+                if (CardsInHand[i] == CardsInHand.Last())
+                {
+                    sb.AppendFormat("{0}: {1}", i, CardsInHand[i].ToString());
+                }
+                else
+                {
+                    sb.AppendFormat("{0}: {1}\n", i, CardsInHand[i].ToString());
+                }
+            }
+            Console.WriteLine(sb.ToString());
+        }
+        private Card ChooseCard()
+        {
+            Card chosenCard = null;
+            Card cardObj = null;
+
+            string topCard = Deck.DiscardPile.GetTopCard().ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("The top card {0}; ", topCard);
+            sb.Append("If there are no card that you can or want to play press 0.");
+
+            CardMenu menu = new CardMenu(Name, sb.ToString(), CardsInHand);
+            chosenCard = menu.MenuControl();
+            return chosenCard;
+        }
         internal Card PlayCard()
         {
-            throw new NotImplementedException();
+            Card card = null;
+            bool success = false;
+            card = ChooseCard();
+            while (!success)
+            {
+                try
+                {
+                    bool LigalPlay = card.ToCompare(Deck.DiscardPile.GetTopCard());
+                    bool IsInHand = CardsInHand.Remove(card);
+                    if (LigalPlay && IsInHand)
+                    {
+                        Deck.DiscardPile.AddCard(card);
+                        success = card != null;
+                        //TODO execute Card penalties
+                    }
+                    else
+                    {
+                        //TODO: what to do and better message
+                        CardsInHand.Add(card);
+                        Console.WriteLine(LigalPlay.ToString() + " " + LigalPlay.ToString());
+                        success = false;
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    success = true;
+                }
+            }
+            return card;
         }
         internal Card DrawCard()
         {
