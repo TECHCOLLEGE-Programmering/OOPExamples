@@ -58,17 +58,8 @@ namespace OOPUNOExamples.Classes
             sb.AppendFormat("The top card {0}; ", topCard);
             sb.Append("If there are no card that you can or want to play press 0.");
 
-            List<MenuOption> menuOptions = new List<MenuOption>();
-            for (int i = 0; i < CardsInHand.Count; i++)
-            {
-                cardObj = CardsInHand[i];
-                menuOptions.Add(
-                    new CardMenuOption(
-                        string.Format("{0}: {1}", i + 1, CardsInHand[i].ToString()),
-                        (out Card chosenCard, Card cardObj) => chosenCard = cardObj)); //TODO: Is there a better way
-            }
-            Menu menu = new Menu(Name, sb.ToString(), menuOptions);
-            menu.MenuControl();
+            CardMenu menu = new CardMenu(Name, sb.ToString(), CardsInHand);
+            chosenCard = menu.MenuControl();
             return chosenCard;
         }
         internal Card PlayCard()
@@ -78,19 +69,27 @@ namespace OOPUNOExamples.Classes
             card = ChooseCard();
             while (!success)
             {
-                //check if card fits
-                bool LigalPlayAnd = card.ToCompare(Deck.DiscardPile.GetTopCard());
-                bool IsInHand = CardsInHand.Remove(card);
-                if (LigalPlayAnd && IsInHand)
+                try
                 {
-                    Deck.DiscardPile.AddCard(card);
-                    success = card != null;
+                    bool LigalPlay = card.ToCompare(Deck.DiscardPile.GetTopCard());
+                    bool IsInHand = CardsInHand.Remove(card);
+                    if (LigalPlay && IsInHand)
+                    {
+                        Deck.DiscardPile.AddCard(card);
+                        success = card != null;
+                        //TODO execute Card penalties
+                    }
+                    else
+                    {
+                        //TODO: what to do and better message
+                        CardsInHand.Add(card);
+                        Console.WriteLine(LigalPlay.ToString() + " " + LigalPlay.ToString());
+                        success = false;
+                    }
                 }
-                else
+                catch (NullReferenceException)
                 {
-                    //TODO: what to do and better message.
-                    Console.WriteLine(LigalPlayAnd.ToString() + " " + LigalPlayAnd.ToString());
-                    success = false;
+                    return card;
                 }
             }
             return card;

@@ -19,7 +19,7 @@ namespace OOPUNOExamples.UI
         }
         protected readonly string optionName;
         internal readonly OptionMethod optionMethod;
-        internal new string ToString()
+        public override string ToString()
         {
             return optionName;
         }

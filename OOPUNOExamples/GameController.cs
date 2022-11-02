@@ -44,7 +44,7 @@ namespace OOPUNOExamples
                         Console.WriteLine("{0}: Uno!", player.Name);
                     }
                 }
-                Console.WriteLine("Press enter for next round");
+                Console.WriteLine("Press enter for next round or ESC to stop playing.");
                 ConsoleKeyInfo key = Console.ReadKey();
                 if (key.Key == ConsoleKey.Escape)
                 {
@@ -63,7 +63,7 @@ namespace OOPUNOExamples
                 new MenuOption(nameof(GameLoop), GameLoop),
                 new MenuOption(nameof(GetPlayerList), GetPlayerList)
             };
-            Menu menu = new Menu(
+            OptionsMenu menu = new OptionsMenu(
                 "Main Menu", 
                 "here you can choose game mode and player", 
                 menuOptions);
@@ -78,15 +78,15 @@ namespace OOPUNOExamples
                 new MenuOption("Create A Normal Deck", delegate ()
                 {
                     Player.Deck = deckCreator.FactoryMethodNormalDeck();
-                    Menu.menuLoopControl = false;
+                    OptionsMenu.menuLoopControl = false;
                 }),
                 new MenuOption("Create A Advanced Deck", delegate ()
                 {
                     Player.Deck = deckCreator.FactoryMethodAdvancedDeck();
-                    Menu.menuLoopControl = false;
+                    OptionsMenu.menuLoopControl = false;
                 })
             };
-            Menu menu = new Menu("Choose Deck Type", "Here you can choose what kinda of deck the game should use. Press ECS to Exit.", menuOptions);
+            OptionsMenu menu = new OptionsMenu("Choose Deck Type", "Here you can choose what kinda of deck the game should use. Press ECS to Exit.", menuOptions);
             menu.MenuControl();
 
             PromtScreen screen = new PromtScreen("Name Players", "Here you can give each player a name for the game. The game needs 2 - 4 players.");
