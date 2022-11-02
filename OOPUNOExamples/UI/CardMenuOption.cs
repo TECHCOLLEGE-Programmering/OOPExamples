@@ -31,7 +31,14 @@ namespace OOPUNOExamples.UI
                         SelectedIndex++;
                         break;
                     case ConsoleKey.Enter:
-                        return options[SelectedIndex];
+                        try
+                        {
+                            return options[SelectedIndex];
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            return null; //TODO game should end before
+                        }
                         break;
                     case ConsoleKey.D0:
                         return null;
