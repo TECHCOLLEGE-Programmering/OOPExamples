@@ -8,22 +8,27 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    internal class Player : CardCollection
+    public class Player : CardCollection
     {
-        internal Player(string name)
+        public Player(string name)
         {
             ID = IDCounter++;
             this.Name = name;
+            if (Player.Deck == null)
+            {
+                DeckCreator deckCreator = new DeckCreator();
+                Player.Deck = deckCreator.FactoryMethodNormalDeck();
+            }
             DrawCards(7);
         }
         private static int IDCounter = 0;
         internal int ID { get; private set; }
         internal string Name { get; private set; }
-        internal int GetHandSize()
+        public int GetHandSize()
         {
             return Cards.Count;
         }
-        internal static Deck Deck;
+        public static Deck Deck;
         internal bool Uno
         {
             get => default;
@@ -47,7 +52,7 @@ namespace OOPUNOExamples.Classes
             }
             Console.WriteLine(sb.ToString());
         }
-        private Card ChooseCard()
+        internal Card ChooseCard()
         {
             Card chosenCard = null;
             Card cardObj = null;
@@ -93,13 +98,13 @@ namespace OOPUNOExamples.Classes
             }
             return card;
         }
-        internal Card DrawCard()
+        public Card DrawCard()
         {
             Card topCard = Deck.DealCard();
             this.Cards.Add(topCard);
             return topCard;
         }
-        internal List<Card> DrawCards(int Amount)
+        public List<Card> DrawCards(int Amount)
         {
             List<Card> topCards = new List<Card>();
             for (int i = 0; i < Amount; i++)

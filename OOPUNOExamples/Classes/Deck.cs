@@ -7,10 +7,14 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    internal class Deck : CardCollection
+    public class Deck : CardCollection
     {
-        internal DiscardPile DiscardPile = new DiscardPile();
-        internal Card DealCard()
+        public Deck()
+        {
+            DiscardPile = new DiscardPile(Cards.Last());
+        } 
+        internal DiscardPile DiscardPile;
+        public Card DealCard()
         {
             Card topCard;
             try
@@ -40,7 +44,7 @@ namespace OOPUNOExamples.Classes
             Cards.AddRange(DiscardPile.Cards);
             var rnd = new Random();
             Cards.OrderBy(item => rnd.Next());
-            DiscardPile = new DiscardPile();
+            DiscardPile = new DiscardPile(Cards.Last());
         }
     }
 }

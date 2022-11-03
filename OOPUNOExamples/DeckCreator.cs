@@ -7,9 +7,9 @@ using System.Text;
 
 namespace OOPUNOExamples
 {
-    internal class DeckCreator
+    public class DeckCreator
     {
-        internal Deck FactoryMethodNormalDeck()
+        public Deck FactoryMethodNormalDeck()
         {
             const ushort amountOfPenaltyCards = 4;
             uint[] numberRange = {1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -45,12 +45,12 @@ namespace OOPUNOExamples
 
             return deck;
         }
-        internal Deck FactoryMethodAdvancedDeck()
+        public Deck FactoryMethodAdvancedDeck()
         {
             Deck deck = new Deck();
             throw new System.NotImplementedException();
             var rnd = new Random();
-            deck.Cards.OrderBy(item => rnd.Next());
+            deck.Cards.OrderBy(item => rnd.Next()); //TODO: is not random right now
             return deck;
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace OOPUNOExamples
         /// <param name="amount"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        internal List<Card> FactoryMethodSpecialCard(ushort amount, short type) //TODO: Make more readable
+        private List<Card> FactoryMethodSpecialCard(ushort amount, short type) //TODO: Make more readable
         {
             List<Card> cards = new List<Card>();
             switch(type){

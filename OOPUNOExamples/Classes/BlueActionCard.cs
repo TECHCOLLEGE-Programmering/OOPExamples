@@ -5,9 +5,9 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    internal class BlueActionCard : BlueCard, IActionable
+    public class BlueActionCard : BlueCard, IActionable
     {
-        internal BlueActionCard() : base(0)
+        public BlueActionCard() : base(0)
         {
         }
         int IActionable.Penalty()

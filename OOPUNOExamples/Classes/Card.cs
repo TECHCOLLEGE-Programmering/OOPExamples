@@ -5,14 +5,14 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    internal abstract class Card
+    public abstract class Card
     {
-        internal Card(uint number)
+        public Card(uint number)
         {
             this.number = number;
         }
         internal uint number;
-        internal virtual bool ToCompare(Card otherCard)
+        public virtual bool ToCompare(Card otherCard)
         {
             bool isCardSamecolor = otherCard.GetType() == this.GetType() || otherCard.GetType().IsSubclassOf(this.GetType()) || this.GetType().IsSubclassOf(otherCard.GetType());
             bool isCardSameNumber = otherCard.number == this.number;
