@@ -5,9 +5,9 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    internal class WildCard : Card, IActionable
+    public class WildCard : Card, IActionable
     {
-        internal WildCard() : base(0)
+        public WildCard() : base(0)
         {
 
         }
