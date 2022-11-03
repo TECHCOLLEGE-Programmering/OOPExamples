@@ -20,7 +20,7 @@ namespace OOPUNOExamples.Classes
         {
             throw new NotImplementedException();
         }
-        internal override bool ToCompare(Card otherCard)
+        public override bool ToCompare(Card otherCard)
         {
             return true;
         }
