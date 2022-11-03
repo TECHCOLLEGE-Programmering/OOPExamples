@@ -9,11 +9,7 @@ namespace OOPUNOExamples.Classes
 {
     public class Deck : CardCollection
     {
-        public Deck()
-        {
-            DiscardPile = new DiscardPile(Cards.Last());
-        } 
-        internal DiscardPile DiscardPile;
+        internal DiscardPile DiscardPile = new DiscardPile();
         public Card DealCard()
         {
             Card topCard;

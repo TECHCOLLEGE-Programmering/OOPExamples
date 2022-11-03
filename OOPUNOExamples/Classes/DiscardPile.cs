@@ -12,6 +12,10 @@ namespace OOPUNOExamples.Classes
             this.Cards = new List<Card>();
             this.Cards.Add(topCard);
         }
+        public DiscardPile()
+        {
+            this.Cards = new List<Card>();
+        }
         internal Card GetTopCard()
         {
             return Cards.Last();
