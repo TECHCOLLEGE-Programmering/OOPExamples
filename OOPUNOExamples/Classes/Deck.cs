@@ -22,7 +22,6 @@ namespace OOPUNOExamples.Classes
             {
                 Console.WriteLine("Shuffling dicard pile, except for top card...");
                 Shuffle();
-                DiscardPile = new DiscardPile(Cards.Last());
             }
             finally
             {
@@ -34,13 +33,14 @@ namespace OOPUNOExamples.Classes
         /// <summary>
         /// Adds cards from discard pile and shuffels deck.
         /// </summary>
-        public void Shuffle()
+        private void Shuffle()
         {
             Card TopCard = DiscardPile.GetTopCard();
             DiscardPile.Cards.Remove(TopCard);
             Cards.AddRange(DiscardPile.Cards);
             var rnd = new Random();
             Cards.OrderBy(item => rnd.Next());
+            DiscardPile = new DiscardPile(Cards.Last());
         }
     }
 }
