@@ -63,18 +63,20 @@ namespace OOPUNOExamples
         /// <returns></returns>
         private List<Card> FactoryMethodSpecialCard(ushort amount, short type) //TODO: Make more readable
         {
+            Random rnd = new Random();
+            Array values = Enum.GetValues(typeof(ActionCardType));
             List<Card> cards = new List<Card>();
             switch(type){
                 case 1:
                     for (ushort i = 0; i <= amount; i++)
                     {
-                        cards.Add(new RedActionCard());
+                        cards.Add(new RedActionCard((ActionCardType)values.GetValue(rnd.Next(values.Length))));
                     }
                     break;
                 case 2:
                     for (ushort i = 0; i <= amount; i++)
                     {
-                        cards.Add(new BlueActionCard());
+                        cards.Add(new BlueActionCard((ActionCardType)values.GetValue(rnd.Next(values.Length))));
                     }
                     break;
                 case 3:

@@ -7,6 +7,8 @@ namespace OOPUNOExamples.Classes
 {
     public class WildCard : Card, IActionable
     {
+        ActionCardType IActionable.CardType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public WildCard() : base(0)
         {
 
