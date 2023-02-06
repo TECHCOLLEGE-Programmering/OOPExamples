@@ -13,7 +13,7 @@ namespace OOPUNOExamples.UI
             this.options = options ?? new List<Card>();
         }
         private new List<Card> options;
-        internal new Card MenuControl()
+        internal Card MenuControl()
         {
             ConsoleKeyInfo key = new ConsoleKeyInfo();
             do
