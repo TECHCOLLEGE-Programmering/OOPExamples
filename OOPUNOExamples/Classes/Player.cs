@@ -14,10 +14,10 @@ namespace OOPUNOExamples.Classes
         {
             ID = IDCounter++;
             this.Name = name;
-            if (Player.Deck == null)
+            if (Player.deck == null)
             {
                 DeckCreator deckCreator = new DeckCreator();
-                Player.Deck = deckCreator.FactoryMethodNormalDeck();
+                Player.deck = deckCreator.FactoryMethodNormalDeck();
             }
             DrawCards(7);
         }
@@ -28,7 +28,7 @@ namespace OOPUNOExamples.Classes
         {
             return Cards.Count;
         }
-        public static Deck Deck;
+        public static Deck deck;
         internal bool Uno
         {
             get => default;
@@ -57,7 +57,7 @@ namespace OOPUNOExamples.Classes
             Card chosenCard = null;
             Card cardObj = null;
 
-            string topCard = Deck.DiscardPile.GetTopCard().ToString();
+            string topCard = deck.DiscardPile.GetTopCard().ToString();
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("The top card {0}; ", topCard);
             sb.Append("If there are no card that you can or want to play press 0.");
@@ -68,18 +68,20 @@ namespace OOPUNOExamples.Classes
         }
         internal Card PlayCard()
         {
+            //TODO execute penalty if player can't put on next card.
+            //TODO keep track of how many draw card has been chained.
             Card card = null;
             bool success = false;
-            card = ChooseCard();
+            card = ChooseCard(); //TODO if not ligal draw card instead.
             while (!success)
             {
                 try
                 {
-                    bool LigalPlay = card.ToCompare(Deck.DiscardPile.GetTopCard());
+                    bool LigalPlay = card.ToCompare(deck.DiscardPile.GetTopCard());
                     bool IsInHand = Cards.Remove(card);
                     if (LigalPlay && IsInHand)
                     {
-                        Deck.DiscardPile.AddCard(card);
+                        deck.DiscardPile.AddCard(card);
                         success = card != null;
                         //TODO execute Card penalties
                     }
@@ -100,7 +102,7 @@ namespace OOPUNOExamples.Classes
         }
         public Card DrawCard()
         {
-            Card topCard = Deck.DealCard();
+            Card topCard = deck.DealCard();
             this.Cards.Add(topCard);
             return topCard;
         }
