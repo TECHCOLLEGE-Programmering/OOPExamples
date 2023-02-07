@@ -20,14 +20,15 @@ namespace OOPUNOExamples.UI
             get { return this.selectedIndex; }
             set
             {
-                try
-                {
-                    options[value].ToString();
-                    this.selectedIndex = value;
-                }
-                catch (ArgumentOutOfRangeException)
+                if (value < 0)
                 {
                     this.selectedIndex = 0;
+                } else if (value > this.options.Count()-1)
+                {
+                    this.SelectedIndex= this.options.Count()-1;
+                } else
+                {
+                    this.selectedIndex = value;
                 }
             }
         }

@@ -10,7 +10,12 @@ namespace OOPUNOExamples.UI
     {
         internal CardMenu(string title, string body, List<Card> options) : base(title, body, new List<Object>(options))
         {
-            this.options = options ?? new List<Card>();
+            this.options = options.ToList<Card>() ?? new List<Card>();
+            if (!options.Contains(null))
+            {
+                options.Remove(null);
+            }
+            options.Add(null);
         }
         private new List<Card> options;
         /// <summary>
@@ -21,17 +26,31 @@ namespace OOPUNOExamples.UI
             DrawTitle();
             foreach (Card cardOption in options)
             {
-                if (cardOption == options[SelectedIndex])
+                if (cardOption == null)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                } else if (cardOption.ToCompare(Player.deck.DiscardPile.GetTopCard()))
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
+                    if (SelectedIndex == options.Count()-1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("{0," + GetCenterPlacement("Pass") + "}\n", "Pass");
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0," + GetCenterPlacement("Pass") + "}\n", "Pass");
+                    }
                 } else
                 {
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    if (cardOption == options[SelectedIndex])
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    } else if (cardOption.ToCompare(Player.deck.DiscardPile.GetTopCard()))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                    } else
+                    {
+                        Console.ResetColor();
+                    }
+                    Console.WriteLine("{0," + GetCenterPlacement(cardOption.ToString()) + "}\n", cardOption.ToString());
                 }
-                Console.WriteLine("{0," + GetCenterPlacement(cardOption.ToString()) + "}\n", cardOption.ToString());
                 Console.ResetColor();
             }
         }

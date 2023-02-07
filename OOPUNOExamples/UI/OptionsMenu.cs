@@ -37,7 +37,14 @@ namespace OOPUNOExamples
                         SelectedIndex++;
                         break;
                     case ConsoleKey.Enter:
-                        options[SelectedIndex].optionMethod();
+                        try
+                        {
+                            options[SelectedIndex].optionMethod();
+                        }
+                        catch (NullReferenceException)
+                        {
+                            continue;
+                        }
                         break;
                     default:
                         GameController.MenuController();

@@ -26,7 +26,8 @@ namespace OOPUNOExamples
                 }
                 foreach (Player player in players)
                 {
-                    Card card = player.PlayCard();
+                    
+                    player.PlayCard();
                     if (player.GetHandSize() == 0)
                     {
                         Console.WriteLine("player {0} won the game!", player.Name); 
@@ -34,10 +35,6 @@ namespace OOPUNOExamples
                         GameDone = false;
                         Console.Read();
                         break;
-                    }
-                    if (card == null)
-                    {
-                        player.DrawCard();
                     }
                     if (player.Uno)
                     {
