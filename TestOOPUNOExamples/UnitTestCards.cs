@@ -12,9 +12,9 @@ namespace TestOOPUNOExamples
         Card redCard2 = new RedCard(2);
         Card blueCard1 = new BlueCard(1);
         Card blueCard2 = new BlueCard(2);
-        Card blueActionCard = new BlueActionCard();
-        Card redActionCard = new RedActionCard();
-        Card wildCard = new WildCard();
+        Card blueActionCard = new BlueActionCard(ColoredActionCardType.DrawTwo);
+        Card redActionCard = new RedActionCard(ColoredActionCardType.DrawTwo);
+        Card wildCard = new WildCard(WildActionCardType.DrawFour);
         [Fact]
         public void TestToCompareColor()
         {
