@@ -72,30 +72,40 @@ namespace OOPUNOExamples.Classes
             //TODO keep track of how many draw card has been chained.
             Card card = null;
             bool success = false;
-            card = ChooseCard(); //TODO if not ligal draw card instead.
+            bool LegalPlay;
+            bool IsInHand;
             while (!success)
             {
+                card = ChooseCard(); //TODO if not legal draw card instead.
                 try
                 {
-                    bool LigalPlay = card.ToCompare(deck.DiscardPile.GetTopCard());
-                    bool IsInHand = Cards.Remove(card);
-                    if (LigalPlay && IsInHand)
-                    {
-                        deck.DiscardPile.AddCard(card);
-                        success = card != null;
-                        //TODO execute Card penalties
-                    }
-                    else
-                    {
-                        //TODO: what to do and better message
-                        Cards.Add(card);
-                        Console.WriteLine(LigalPlay.ToString() + " " + LigalPlay.ToString());
-                        success = false;
-                    }
+                    Card otherCard = deck.DiscardPile.GetTopCard();
+                    LegalPlay = card.ToCompare(otherCard); //TODO: Null ref doesn't catch
+                    IsInHand = Cards.Remove(card);
                 }
                 catch (NullReferenceException)
                 {
-                    success = true;
+                    DrawCard();
+                    return deck.DiscardPile.GetTopCard();
+                }
+                catch (Exception) //DEBUG: to catch exceptions
+                {
+                    DrawCard();
+                    return deck.DiscardPile.GetTopCard();
+                }
+
+                if (LegalPlay && IsInHand)
+                {
+                    deck.DiscardPile.AddCard(card);
+                    success = card != null;
+                    //TODO execute Card penalties
+                }
+                else
+                {
+                    //TODO: what to do and better message
+                    Cards.Add(card);
+                    //DEBUG: Console.WriteLine(LegalPlay.ToString() + " " + LegalPlay.ToString());
+                    Console.WriteLine("Card is not a legal play. Try again.");
                 }
             }
             return card;
