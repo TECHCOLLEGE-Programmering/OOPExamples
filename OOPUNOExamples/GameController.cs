@@ -77,12 +77,12 @@ namespace OOPUNOExamples
             {
                 new MenuOption("Create A Normal Deck", delegate ()
                 {
-                    Player.Deck = deckCreator.FactoryMethodNormalDeck();
+                    Player.deck = deckCreator.FactoryMethodNormalDeck();
                     OptionsMenu.menuLoopControl = false;
                 }),
                 new MenuOption("Create A Advanced Deck", delegate ()
                 {
-                    Player.Deck = deckCreator.FactoryMethodAdvancedDeck();
+                    Player.deck = deckCreator.FactoryMethodAdvancedDeck();
                     OptionsMenu.menuLoopControl = false;
                 })
             };
@@ -107,7 +107,7 @@ namespace OOPUNOExamples
         {
 
             DeckCreator deckCreator = new DeckCreator();
-            Player.Deck = deckCreator.FactoryMethodNormalDeck();
+            Player.deck = deckCreator.FactoryMethodNormalDeck();
 
             players.Add(new Player("lkri"));
             players.Add(new Player("sinb"));
