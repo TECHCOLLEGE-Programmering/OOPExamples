@@ -31,7 +31,7 @@ namespace OOPUNOExamples.Classes
             return topCard;
         }
         /// <summary>
-        /// Adds cards from discard pile and shuffels deck.
+        /// Adds cards from discard pile to deck and shuffels deck.
         /// </summary>
         private void Shuffle()
         {
