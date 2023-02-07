@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    public class WildCard : Card, IActionable
+    public class WildCard : Card, IActionable<WildActionCardType>
     {
-        ActionCardType IActionable.CardType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public WildCard() : base(0)
+        public WildCard(WildActionCardType cardType) : base(11)
         {
-
+            this.CardType = cardType;
         }
-        int IActionable.Penalty()
+        public WildActionCardType CardType { get; set; }
+
+        public int Penalty(Player player)
         {
-            //TODO: draw cards if wildcard +4
+            if (CardType.Equals(WildActionCardType.DrawFour))
+                player.DrawCards(4);
+            //TODO change color
             throw new NotImplementedException();
         }
-        int IActionable.GetNumber()
+        public uint GetNumber()
         {
-            throw new NotImplementedException();
+            return this.number;
         }
         public override bool ToCompare(Card otherCard)
         {

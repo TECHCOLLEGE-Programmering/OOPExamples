@@ -6,16 +6,21 @@ using System.Text;
 
 namespace OOPUNOExamples
 {
-    public enum ActionCardType
+    public enum ColoredActionCardType
     {
         SwitchDirection,
         SkipTurn,
-        ChangeColour,
+        DrawTwo
     }
-    public interface IActionable
+    public enum WildActionCardType
     {
-        internal int GetNumber();
-        internal int Penalty();
-        public ActionCardType CardType { get; set; }
+        DrawFour,
+        ChangeColor
+    }
+    public interface IActionable<T>
+    {
+        public uint GetNumber(); //TODO is this needed?
+        public int Penalty(Player player);
+        public T CardType { get; set; }
     }
 }

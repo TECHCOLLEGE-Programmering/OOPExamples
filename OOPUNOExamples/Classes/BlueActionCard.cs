@@ -3,32 +3,46 @@ using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    public class BlueActionCard : BlueCard, IActionable
+    public class BlueActionCard : BlueCard, IActionable<ColoredActionCardType>
     {
 
-        public BlueActionCard(ActionCardType cardType) : base(0)
+        public BlueActionCard(ColoredActionCardType cardType) : base(10)
         {
             this.CardType = cardType;
         }
-        public ActionCardType CardType { get; set; }
+        public ColoredActionCardType CardType { get; set; }
 
-        int IActionable.Penalty()
+        public int Penalty(Player player)
         {
-            //TODO: draw cards
-            throw new NotImplementedException();
+            switch (CardType)
+            {
+                case ColoredActionCardType.SwitchDirection:
+                    //TODO reposability to game controller
+                    throw new NotImplementedException();
+                    break;
+                case ColoredActionCardType.SkipTurn:
+                    //TODO reposability to game controller
+                    throw new NotImplementedException();
+                    break;
+                case ColoredActionCardType.DrawTwo:
+                    player.DrawCards(2);
+                    break;
+            }
+            return 1; //TODO maybe void or bool
         }
-        int IActionable.GetNumber()
+        public uint GetNumber()
         {
-            throw new NotImplementedException();
+            return this.number;
         }
         public override bool ToCompare(Card otherCard) {
             bool isCardSamecolor = IsCardSameColor(otherCard);
             bool isCardSameType = false;
-            IActionable otherICard = otherCard as IActionable;
+            IActionable<ColoredActionCardType> otherICard = otherCard as IActionable<ColoredActionCardType>;
             if (number == 0)
             {
                 isCardSameType = this.CardType.Equals(otherICard.CardType);
