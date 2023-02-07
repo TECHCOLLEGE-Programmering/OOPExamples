@@ -11,15 +11,25 @@ namespace OOPUNOExamples.UI
         {
             this.title = title;
             this.body = body;
+            Console.ResetColor();
         }
         protected readonly string title;
         private readonly string body;
-        internal virtual void Draw()
+        internal void DrawTitle()
         {
             Console.Clear();
             Console.Title = title;
-            Console.WriteLine("{0,"+ GetCenterPlacement(title) + "}\n", title);
+            Console.WriteLine("{0," + GetCenterPlacement(title) + "}\n", title);
             Console.WriteLine("{0," + GetCenterPlacement(body) + "}", body); //TODO: maybe spilt string per newline.
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                Console.Write("_");
+            }
+            Console.WriteLine("\n");
+        }
+        internal virtual void Draw()
+        {
+            DrawTitle();
         }
         protected string GetCenterPlacement(string text)
         {

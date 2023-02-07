@@ -34,11 +34,6 @@ namespace OOPUNOExamples.UI
         internal override void Draw()
         {
             base.Draw();
-            for (int i = 0; i < Console.WindowWidth; i++)
-            {
-                Console.Write("_");
-            }
-            Console.WriteLine("\n");
             foreach (var option in options)
             {
                 if (option == options[SelectedIndex])

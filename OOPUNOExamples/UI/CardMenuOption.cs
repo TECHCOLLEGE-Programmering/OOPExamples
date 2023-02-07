@@ -13,6 +13,28 @@ namespace OOPUNOExamples.UI
             this.options = options ?? new List<Card>();
         }
         private new List<Card> options;
+        /// <summary>
+        /// Draw card options with dfferent colors if they are legal plays or not.
+        /// </summary>
+        internal override void Draw()
+        {
+            DrawTitle();
+            foreach (Card cardOption in options)
+            {
+                if (cardOption == options[SelectedIndex])
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                } else if (cardOption.ToCompare(Player.deck.DiscardPile.GetTopCard()))
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                } else
+                {
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+                Console.WriteLine("{0," + GetCenterPlacement(cardOption.ToString()) + "}\n", cardOption.ToString());
+                Console.ResetColor();
+            }
+        }
         internal Card MenuControl()
         {
             ConsoleKeyInfo key = new ConsoleKeyInfo();
