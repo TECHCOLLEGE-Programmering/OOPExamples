@@ -17,7 +17,7 @@
   <Class Name="OOPUNOExamples.Classes.Player">
     <Position X="3.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAAIAAAAAAkAAAAAAAAAQAEAAAAAAAAABAEAACAAI=</HashCode>
+      <HashCode>BAAAAIAAAAAAkAAAAAAAAAQAEAAAAEAAAAAAEAACAAI=</HashCode>
       <FileName>Classes\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,7 +31,7 @@
   <Class Name="OOPUNOExamples.UI.Screen">
     <Position X="13.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAAgAAIAAABAAAEQAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAASAAAAgAAIAAABAAAEQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI\Screen.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -52,26 +52,26 @@
   <Class Name="OOPUNOExamples.Classes.BlueActionCard">
     <Position X="7.25" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAAAAAEIAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAQAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\BlueActionCard.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.94" />
+    <Lollipop Orientation="Bottom" Position="0.155" />
   </Class>
   <Class Name="OOPUNOExamples.Classes.RedActionCard">
     <Position X="9" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAAAAAEIAAAAAgABAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAQAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\RedActionCard.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.94" />
+    <Lollipop Orientation="Bottom" Position="1.184" />
   </Class>
   <Class Name="OOPUNOExamples.Classes.WildCard">
     <Position X="10.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAQAAAAAEIAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAQAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\WildCard.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.94" />
+    <Lollipop Orientation="Bottom" Position="0.176" />
   </Class>
   <Class Name="OOPUNOExamples.DeckCreator">
     <Position X="3.5" Y="6" Width="2.25" />
@@ -110,7 +110,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAEAA=</HashCode>
       <FileName>Classes\CardCollection.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -134,7 +134,7 @@
   <Class Name="OOPUNOExamples.UI.CardMenu">
     <Position X="13.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AEAAAAAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI\CardMenuOption.cs</FileName>
     </TypeIdentifier>
   </Class>
