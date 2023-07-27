@@ -10,12 +10,7 @@ namespace OOPUNOExamples.UI
     {
         internal CardMenu(string title, string body, List<Card> options) : base(title, body, new List<Object>(options))
         {
-            this.options = options.ToList<Card>() ?? new List<Card>();
-            if (!options.Contains(null))
-            {
-                options.Remove(null);
-            }
-            options.Add(null);
+            this.options = options ?? new List<Card>();
         }
         private new List<Card> options;
         /// <summary>
