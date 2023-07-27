@@ -49,5 +49,9 @@ namespace OOPUNOExamples.Classes
             }
             return isCardSamecolor || isCardSameType;
         }
+        public override string ToString()
+        {
+            return base.ToString() + " " + CardType.ToString();
+        }
     }
 }

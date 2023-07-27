@@ -77,23 +77,17 @@ namespace OOPUNOExamples.Classes
             while (!success)
             {
                 card = ChooseCard(); //TODO if not legal draw card instead.
-                try
+                if (card == null)
+                {
+                    DrawCard();
+                    return deck.DiscardPile.GetTopCard();
+                }
+                else
                 {
                     Card otherCard = deck.DiscardPile.GetTopCard();
                     LegalPlay = card.ToCompare(otherCard); //TODO: Null ref doesn't catch
                     IsInHand = Cards.Remove(card);
                 }
-                catch (NullReferenceException)
-                {
-                    DrawCard();
-                    return deck.DiscardPile.GetTopCard();
-                }
-                catch (Exception) //DEBUG: to catch exceptions
-                {
-                    DrawCard();
-                    return deck.DiscardPile.GetTopCard();
-                }
-
                 if (LegalPlay && IsInHand)
                 {
                     deck.DiscardPile.AddCard(card);
@@ -102,11 +96,21 @@ namespace OOPUNOExamples.Classes
                 }
                 else
                 {
-                    //TODO: what to do and better message
-                    Cards.Add(card);
+                    if (card != null)
+                    {
+                        Cards.Add(card);
+                    }
                     //DEBUG: Console.WriteLine(LegalPlay.ToString() + " " + LegalPlay.ToString());
                     Console.WriteLine("Card is not a legal play. Try again.");
                 }
+            }
+            if (Cards.Count == 1)
+            {
+                Uno = true;
+            }
+            else
+            { 
+                Uno = false;
             }
             return card;
         }

@@ -3,6 +3,7 @@ using OOPUNOExamples.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -16,17 +17,24 @@ namespace OOPUNOExamples
         private static int numberOfPlayers = 2;
         public static void GameLoop()
         {
+            if (players.Count < 2)
+            {
+                Console.WriteLine("You have to setup the game before you can start."); //TODO: could throw an exception here.
+                return;
+            }
+
             GameDone = false;
+            bool SkipTurn = false;
             while (!GameDone)
             {
-                if (players.Count < 2)
+                if (SkipTurn)
                 {
-                    Console.WriteLine("You have to setup the game before you can start."); //TODO: could throw an exception here.
-                    return;
+                    SkipTurn = false;
+                    continue;
                 }
-                foreach (Player player in players)
+                for(int i = 0; i >= players.Count-1; i++) //TODO try with for loop
                 {
-                    
+                    Player player = players[i];
                     player.PlayCard();
                     if (player.GetHandSize() == 0)
                     {
@@ -39,6 +47,32 @@ namespace OOPUNOExamples
                     if (player.Uno)
                     {
                         Console.WriteLine("{0}: Uno!", player.Name);
+                    }
+
+                    //ActionCard Handling
+                    //TODO: this should be in the ActionCard classes, to disribute responsibility.
+                    Card topCard = Player.deck.DiscardPile.GetTopCard();
+
+                    if (typeof(IActionable<ColoredActionCardType>).IsAssignableFrom(topCard.GetType())) 
+                    {
+                        //DEBUG: Console.WriteLine("Top card is a ColoredActionCardType");
+                        IActionable<ColoredActionCardType> card = (IActionable<ColoredActionCardType>)topCard;
+                        if (card.CardType == ColoredActionCardType.SkipTurn)
+                        {
+                            Console.WriteLine("{0} was skipped!", player.Name);
+                            SkipTurn = true;
+                        }
+                        else if (card.CardType == ColoredActionCardType.SwitchDirection)
+                        {
+                            players.Reverse(); //TODO: test this with more than 2 players
+                        }
+                        else if (card.CardType == ColoredActionCardType.DrawTwo)
+                        {
+                            int nextPlayerIndex = i + 1;
+                            players[nextPlayerIndex].DrawCards(2);
+                            Console.WriteLine("{0} has to draw two cards!", players[nextPlayerIndex].Name);
+                            SkipTurn = true;
+                        }
                     }
                 }
                 Console.WriteLine("Press enter for next round or ESC to stop playing.");

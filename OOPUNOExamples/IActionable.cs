@@ -17,7 +17,7 @@ namespace OOPUNOExamples
         DrawFour,
         ChangeColor
     }
-    public interface IActionable<T>
+    public interface IActionable<T> // TODO why use generic?
     {
         public uint GetNumber(); //TODO is this needed?
         public int Penalty(Player player);
