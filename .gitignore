@@ -2,10 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-#VS Code
-tasks.json
-launch.json
-
 # User-specific files
 *.rsuser
 *.suo
