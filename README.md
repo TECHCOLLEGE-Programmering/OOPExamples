@@ -20,3 +20,5 @@ The project demostrats use of:
 - Static fields in non static classes
 - Delegates
 - Lamda / anonymous functions
+
+VS remote test
