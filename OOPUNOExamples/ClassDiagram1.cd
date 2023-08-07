@@ -101,7 +101,7 @@
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAQAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAQAEAAAAAAQAAAgAAAAAAAAQgAAAAAA=</HashCode>
       <FileName>Classes\WildCard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Bottom" Position="0.176" />
@@ -187,9 +187,9 @@
     </TypeIdentifier>
   </Class>
   <Interface Name="OOPUNOExamples.IActionable&lt;T&gt;">
-    <Position X="7.75" Y="8.75" Width="1.5" />
+    <Position X="8.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IActionable.cs</FileName>
     </TypeIdentifier>
   </Interface>
