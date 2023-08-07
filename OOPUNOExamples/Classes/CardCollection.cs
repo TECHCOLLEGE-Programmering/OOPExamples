@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace OOPUNOExamples.Classes
@@ -11,7 +12,8 @@ namespace OOPUNOExamples.Classes
 
         public void Shuffle()
         {
-            throw new NotImplementedException(); //TODO Shuffle on CardCollection
+            Random rng = new();
+            Cards = Cards.OrderBy(a => rng.Next()).ToList();
         }
     }
 }
