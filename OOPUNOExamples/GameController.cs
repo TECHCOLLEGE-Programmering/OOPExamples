@@ -3,6 +3,7 @@ using OOPUNOExamples.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,14 +28,16 @@ namespace OOPUNOExamples
             bool SkipTurn = false;
             while (!GameDone)
             {
-                if (SkipTurn)
-                {
-                    SkipTurn = false;
-                    continue;
-                }
                 for(int i = 0; i <= players.Count-1; i++) //TODO try with for loop
                 {
                     Player player = players[i];
+                    if (SkipTurn)
+                    {
+                        Console.WriteLine("{0} was skipped!", player.Name);
+                        Console.ReadKey();
+                        SkipTurn = false;
+                        continue;
+                    }
                     player.PlayCard();
                     if (player.Hand.GetHandSize() == 0)
                     {
@@ -59,7 +62,6 @@ namespace OOPUNOExamples
                         IActionable<ColoredActionCardType> card = (IActionable<ColoredActionCardType>)topCard;
                         if (card.CardType == ColoredActionCardType.SkipTurn)
                         {
-                            Console.WriteLine("{0} was skipped!", player.Name);
                             SkipTurn = true;
                         }
                         else if (card.CardType == ColoredActionCardType.SwitchDirection)
@@ -71,7 +73,7 @@ namespace OOPUNOExamples
                             int nextPlayerIndex = i + 1;
                             players[nextPlayerIndex].DrawCards(2);
                             Console.WriteLine("{0} has to draw two cards!", players[nextPlayerIndex].Name);
-                            SkipTurn = true;
+                            Console.ReadKey();
                         }
                     }
                 }
