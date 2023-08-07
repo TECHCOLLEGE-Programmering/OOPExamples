@@ -1,72 +1,105 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="OOPUNOExamples.Classes.Card">
-    <Position X="9" Y="0.5" Width="1.5" />
+    <Position X="5.25" Y="3" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQQAUAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Card.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.Classes.Deck">
-    <Position X="5.25" Y="1.75" Width="1.5" />
+    <Position X="8" Y="2.25" Width="2.25" />
+    <InheritanceLine Type="OOPUNOExamples.Classes.CardCollection" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7" Y="2.063" />
+        <Point X="7.624" Y="2.063" />
+        <Point X="7.624" Y="2.75" />
+        <Point X="8" Y="2.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAEAA=</HashCode>
       <FileName>Classes\Deck.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.Classes.Player">
-    <Position X="3.5" Y="0.5" Width="1.5" />
+    <Position X="2.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>BAAAAIAAAAAAkAAAAAAAAAQAEAAAAEAAAAAAEAACAAI=</HashCode>
+      <HashCode>AAAAAAAAACAAkAAAAAAAAAQAEAAAAEAAAAAAEAACAAI=</HashCode>
       <FileName>Classes\Player.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Hand" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="OOPUNOExamples.GameController">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAQAAAAAgAAACAAAAICAAQACAgAA=</HashCode>
       <FileName>GameController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.UI.Screen">
-    <Position X="13.75" Y="0.5" Width="1.5" />
+    <Position X="11.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAASAAAAgAAIAAABAAAEQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI\Screen.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.Classes.BlueCard">
-    <Position X="7.25" Y="4" Width="1.5" />
+    <Position X="2.25" Y="6" Width="2.5" />
+    <InheritanceLine Type="OOPUNOExamples.Classes.Card" FixedFromPoint="true">
+      <Path>
+        <Point X="6.25" Y="5.132" />
+        <Point X="6.25" Y="5.7" />
+        <Point X="3.5" Y="5.7" />
+        <Point X="3.5" Y="6" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\BlueCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.Classes.RedCard">
-    <Position X="9" Y="4" Width="1.5" />
+    <Position X="5" Y="6" Width="2.5" />
+    <InheritanceLine Type="OOPUNOExamples.Classes.Card" FixedFromPoint="true">
+      <Path>
+        <Point X="6.25" Y="5.132" />
+        <Point X="6.25" Y="6" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\RedCard.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.Classes.BlueActionCard">
-    <Position X="7.25" Y="6" Width="1.5" />
+    <Position X="2.25" Y="8" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAQAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAQAEAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\BlueActionCard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Bottom" Position="0.155" />
   </Class>
   <Class Name="OOPUNOExamples.Classes.RedActionCard">
-    <Position X="9" Y="6" Width="1.5" />
+    <Position X="5" Y="8" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAQAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAAAAAAAQAEAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\RedActionCard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Bottom" Position="1.184" />
   </Class>
   <Class Name="OOPUNOExamples.Classes.WildCard">
-    <Position X="10.75" Y="4" Width="1.5" />
+    <Position X="7.75" Y="6" Width="2.5" />
+    <InheritanceLine Type="OOPUNOExamples.Classes.Card" FixedFromPoint="true">
+      <Path>
+        <Point X="6.25" Y="5.132" />
+        <Point X="6.25" Y="5.7" />
+        <Point X="9" Y="5.7" />
+        <Point X="9" Y="6" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAQAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\WildCard.cs</FileName>
@@ -74,39 +107,47 @@
     <Lollipop Orientation="Bottom" Position="0.176" />
   </Class>
   <Class Name="OOPUNOExamples.DeckCreator">
-    <Position X="3.5" Y="6" Width="2.25" />
+    <Position X="0.5" Y="4" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAACAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>DeckCreator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.UI.MenuOption" Collapsed="true">
-    <Position X="15.5" Y="1.25" Width="1.5" />
+    <Position X="13.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAACAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI\Menuoption.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.UI.PromtScreen">
-    <Position X="15.5" Y="3.5" Width="1.5" />
+    <Position X="13.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>UI\PromtScreen.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.Classes.DiscardPile">
-    <Position X="7.25" Y="1.75" Width="1.5" />
+    <Position X="8" Y="0.5" Width="2.25" />
+    <InheritanceLine Type="OOPUNOExamples.Classes.CardCollection" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="7" Y="2.063" />
+        <Point X="7.59" Y="2.063" />
+        <Point X="7.59" Y="1.281" />
+        <Point X="8" Y="1.281" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\DiscardPile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.Classes.CardCollection" Collapsed="true">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Position X="5.5" Y="1.75" Width="1.5" />
     <AssociationLine Name="Cards" Type="OOPUNOExamples.Classes.Card" FixedFromPoint="true">
       <Path>
-        <Point X="7.75" Y="0.743" />
-        <Point X="9" Y="0.743" />
+        <Point X="6.25" Y="2.312" />
+        <Point X="6.25" Y="3" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -118,35 +159,42 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="OOPUNOExamples.UI.Menu">
-    <Position X="13.75" Y="3.5" Width="1.5" />
+    <Position X="11.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAgAAAQAAAAAAAAAAgAAAAIAAAAAAAAA=</HashCode>
       <FileName>UI\Menu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.OptionsMenu">
-    <Position X="15.75" Y="6.75" Width="1.5" />
+    <Position X="13.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI\OptionsMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OOPUNOExamples.UI.CardMenu">
-    <Position X="13.75" Y="6.75" Width="1.5" />
+    <Position X="11.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI\CardMenuOption.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="OOPUNOExamples.IActionable&lt;T&gt;">
-    <Position X="10.75" Y="0.5" Width="1.5" />
+  <Class Name="OOPUNOExamples.Classes.HandOfCards" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAAAAAAAAAAAAAAAAAAAQAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\HandOfCards.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="OOPUNOExamples.IActionable&lt;T&gt;">
+    <Position X="7.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IActionable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Delegate Name="OOPUNOExamples.UI.OptionMethod" Collapsed="true">
-    <Position X="15.5" Y="0.5" Width="1.5" />
+    <Position X="13.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UI\Menuoption.cs</FileName>
