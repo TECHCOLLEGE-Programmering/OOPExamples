@@ -32,11 +32,11 @@ namespace OOPUNOExamples
                     SkipTurn = false;
                     continue;
                 }
-                for(int i = 0; i >= players.Count-1; i++) //TODO try with for loop
+                for(int i = 0; i <= players.Count-1; i++) //TODO try with for loop
                 {
                     Player player = players[i];
                     player.PlayCard();
-                    if (player.GetHandSize() == 0)
+                    if (player.Hand.GetHandSize() == 0)
                     {
                         Console.WriteLine("player {0} won the game!", player.Name); 
                         LogPlayerWin(player);

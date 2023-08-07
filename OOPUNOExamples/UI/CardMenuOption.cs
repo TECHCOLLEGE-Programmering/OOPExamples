@@ -8,9 +8,9 @@ namespace OOPUNOExamples.UI
 {
     internal class CardMenu : Menu
     {
-        internal CardMenu(string title, string body, List<Card> options) : base(title, body, new List<Object>(options))
+        internal CardMenu(string title, string body, CardCollection options) : base(title, body, new List<Object>(options.Cards))
         {
-            this.options = options ?? new List<Card>();
+            this.options = options.Cards ?? new List<Card>();
         }
         private new List<Card> options;
         /// <summary>

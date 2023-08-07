@@ -8,7 +8,7 @@ using System.Text;
 
 namespace OOPUNOExamples.Classes
 {
-    public class Player : CardCollection
+    public class Player
     {
         public Player(string name)
         {
@@ -19,38 +19,20 @@ namespace OOPUNOExamples.Classes
                 DeckCreator deckCreator = new DeckCreator();
                 Player.deck = deckCreator.FactoryMethodNormalDeck();
             }
+            Hand = new HandOfCards();
             DrawCards(7);
         }
         private static int IDCounter = 0;
         internal int ID { get; private set; }
         internal string Name { get; private set; }
-        public int GetHandSize()
-        {
-            return Cards.Count;
-        }
         public static Deck deck;
+        public HandOfCards Hand { get; private set; }
         internal bool Uno
         {
             get => default;
             set
             {
             }
-        }
-        private void PrintCardsInHand()
-        {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 1; i < Cards.Count; i++)
-            {
-                if (Cards[i] == Cards.Last())
-                {
-                    sb.AppendFormat("{0}: {1}", i, Cards[i].ToString());
-                }
-                else
-                {
-                    sb.AppendFormat("{0}: {1}\n", i, Cards[i].ToString());
-                }
-            }
-            Console.WriteLine(sb.ToString());
         }
         internal Card ChooseCard()
         {
@@ -62,7 +44,7 @@ namespace OOPUNOExamples.Classes
             sb.AppendFormat("The top card {0}; ", topCard);
             sb.Append("If there are no card that you can or want to play press 0.");
 
-            CardMenu menu = new CardMenu(Name, sb.ToString(), Cards);
+            CardMenu menu = new CardMenu(Name, sb.ToString(), Hand);
             chosenCard = menu.MenuControl();
             return chosenCard;
         }
@@ -86,7 +68,7 @@ namespace OOPUNOExamples.Classes
                 {
                     Card otherCard = deck.DiscardPile.GetTopCard();
                     LegalPlay = card.ToCompare(otherCard); //TODO: Null ref doesn't catch
-                    IsInHand = Cards.Remove(card);
+                    IsInHand = Hand.Cards.Remove(card);
                 }
                 if (LegalPlay && IsInHand)
                 {
@@ -98,13 +80,13 @@ namespace OOPUNOExamples.Classes
                 {
                     if (card != null)
                     {
-                        Cards.Add(card);
+                        Hand.Cards.Add(card);
                     }
                     //DEBUG: Console.WriteLine(LegalPlay.ToString() + " " + LegalPlay.ToString());
                     Console.WriteLine("Card is not a legal play. Try again.");
                 }
             }
-            if (Cards.Count == 1)
+            if (Hand.Cards.Count == 1)
             {
                 Uno = true;
             }
@@ -117,7 +99,7 @@ namespace OOPUNOExamples.Classes
         public Card DrawCard()
         {
             Card topCard = deck.DealCard();
-            this.Cards.Add(topCard);
+            Hand.Cards.Add(topCard);
             return topCard;
         }
         public List<Card> DrawCards(int Amount)
