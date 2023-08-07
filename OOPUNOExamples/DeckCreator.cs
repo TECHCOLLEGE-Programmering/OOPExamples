@@ -83,6 +83,7 @@ namespace OOPUNOExamples
                         cards.Add(new BlueActionCard((ColoredActionCardType)ColoredValues.GetValue(rnd.Next(ColoredValues.Length))));
                         break;
                     case 3:
+
                         cards.Add(new WildCard((WildActionCardType)wildValues.GetValue(rnd.Next(wildValues.Length))));
                         break;
                 }

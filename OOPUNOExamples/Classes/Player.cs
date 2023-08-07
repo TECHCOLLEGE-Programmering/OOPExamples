@@ -70,6 +70,12 @@ namespace OOPUNOExamples.Classes
                     LegalPlay = card.ToCompare(otherCard); //TODO: Null ref doesn't catch
                     IsInHand = Hand.Cards.Remove(card);
                 }
+                bool isWildCard = card.GetType() == typeof(WildCard);
+                if (isWildCard)
+                {
+                    WildCard wildCard = card as WildCard;
+                    wildCard.ChooseColor();
+                }
                 if (LegalPlay && IsInHand)
                 {
                     deck.DiscardPile.AddCard(card);
