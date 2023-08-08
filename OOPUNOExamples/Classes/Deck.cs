@@ -40,7 +40,7 @@ namespace OOPUNOExamples.Classes
             Cards.AddRange(DiscardPile.Cards);
             var rnd = new Random();
             Cards.OrderBy(item => rnd.Next());
-            DiscardPile = new DiscardPile(Cards.Last());
+            DiscardPile = new DiscardPile(Cards.Last()); //TODO: Make sure there is at least one card in the discard pile.
         }
     }
 }
