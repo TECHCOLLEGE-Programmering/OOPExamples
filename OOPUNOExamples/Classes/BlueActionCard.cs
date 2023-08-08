@@ -17,23 +17,24 @@ namespace OOPUNOExamples.Classes
         }
         public ColoredActionCardType CardType { get; set; }
 
-        public int Penalty(Player player)
+        public void Penalty(Player nextPlayer)
         {
-            switch (CardType)
+            if (this.CardType == ColoredActionCardType.SkipTurn)
             {
-                case ColoredActionCardType.SwitchDirection:
-                    //TODO reposability to game controller
-                    throw new NotImplementedException();
-                    break;
-                case ColoredActionCardType.SkipTurn:
-                    //TODO reposability to game controller
-                    throw new NotImplementedException();
-                    break;
-                case ColoredActionCardType.DrawTwo:
-                    player.DrawCards(2);
-                    break;
+                nextPlayer.SkipTurn = true;
             }
-            return 1; //TODO maybe void or bool
+            else if (this.CardType == ColoredActionCardType.SwitchDirection)
+            {
+                GameController.players.Reverse(); //TODO: test this with more than 2 players
+                Console.WriteLine("Direction was reversed next player is {0}.", nextPlayer.Name);
+                Console.ReadKey();
+            }
+            else if (this.CardType == ColoredActionCardType.DrawTwo)
+            {
+                nextPlayer.DrawCards(2);
+                Console.WriteLine("{0} has to draw two cards!", nextPlayer.Name);
+                Console.ReadKey();
+            }
         }
         public uint GetNumber()
         {
@@ -42,9 +43,9 @@ namespace OOPUNOExamples.Classes
         public override bool ToCompare(Card otherCard) {
             bool isCardSamecolor = IsCardSameColor(otherCard);
             bool isCardSameType = false;
-            IActionable<ColoredActionCardType> otherICard = otherCard as IActionable<ColoredActionCardType>;
-            if (number == 0)
+            if (otherCard.GetType().GetInterfaces().Contains(typeof(IActionable<ColoredActionCardType>)))
             {
+                IActionable<ColoredActionCardType> otherICard = otherCard as IActionable<ColoredActionCardType>;
                 isCardSameType = this.CardType.Equals(otherICard.CardType);
             }
             return isCardSamecolor || isCardSameType;

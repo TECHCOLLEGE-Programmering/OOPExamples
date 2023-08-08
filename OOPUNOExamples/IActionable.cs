@@ -20,7 +20,7 @@ namespace OOPUNOExamples
     public interface IActionable<T> // TODO why use generic?
     {
         public uint GetNumber(); //TODO is this needed?
-        public int Penalty(Player player);
+        public void Penalty(Player nextPlayer);
         public T CardType { get; set; }
     }
 }

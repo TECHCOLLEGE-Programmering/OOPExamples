@@ -27,6 +27,7 @@ namespace OOPUNOExamples.Classes
         internal string Name { get; private set; }
         public static Deck deck;
         public HandOfCards Hand { get; private set; }
+        internal bool SkipTurn { get; set; } = false;
         internal bool Uno
         {
             get => default;
@@ -69,12 +70,6 @@ namespace OOPUNOExamples.Classes
                     Card otherCard = deck.DiscardPile.GetTopCard();
                     LegalPlay = card.ToCompare(otherCard); //TODO: Null ref doesn't catch
                     IsInHand = Hand.Cards.Remove(card);
-                }
-                bool isWildCard = card.GetType() == typeof(WildCard);
-                if (isWildCard)
-                {
-                    WildCard wildCard = card as WildCard;
-                    wildCard.ChooseColor();
                 }
                 if (LegalPlay && IsInHand)
                 {
