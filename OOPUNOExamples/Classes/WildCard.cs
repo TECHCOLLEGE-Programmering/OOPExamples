@@ -15,12 +15,15 @@ namespace OOPUNOExamples.Classes
         }
         public WildActionCardType CardType { get; set; }
         public Card Color { get; set; }
-        public int Penalty(Player player)
+        public void Penalty(Player nextPlayer)
         {
             if (CardType.Equals(WildActionCardType.DrawFour))
-                player.DrawCards(4);
-            //TODO change color
-            throw new NotImplementedException();
+            {
+                nextPlayer.DrawCards(4);
+                Console.WriteLine("{0} has to draw four cards!", nextPlayer.Name);
+                Console.ReadKey();
+            }
+            ChooseColor();
         }
         public void ChooseColor()
         {

@@ -13,7 +13,7 @@ namespace OOPUNOExamples
 {
     internal static class GameController //TODO: Make MVC
     {
-        private static List<Player> players = new List<Player>();
+        internal static List<Player> players = new List<Player>();
         private static bool GameDone = true;
         private static int numberOfPlayers = 2;
         public static void GameLoop()
@@ -25,20 +25,37 @@ namespace OOPUNOExamples
             }
 
             GameDone = false;
-            bool SkipTurn = false;
             while (!GameDone)
             {
                 for(int i = 0; i <= players.Count-1; i++) //TODO try with for loop
                 {
                     Player player = players[i];
-                    if (SkipTurn)
+                    if (player.SkipTurn)
                     {
                         Console.WriteLine("{0} was skipped!", player.Name);
+                        player.SkipTurn = false;
                         Console.ReadKey();
-                        SkipTurn = false;
                         continue;
                     }
-                    player.PlayCard();
+                    Card playedCard = player.PlayCard();
+                    //ActionCard Handling
+                    bool IsColoredActionCard = playedCard.GetType().GetInterfaces().Contains(typeof(IActionable<ColoredActionCardType>));
+                    bool IsWildCard = playedCard.GetType().GetInterfaces().Contains(typeof(IActionable<WildActionCardType>));
+                    if (IsColoredActionCard || IsWildCard)
+                    {
+                        //DEBUG: Console.WriteLine("Top card is a ColoredActionCardType");
+                        int nextPlayerIndex = (i + 1) % (players.Count);
+                        if (IsWildCard)
+                        {
+                            IActionable<WildActionCardType> card = playedCard as IActionable<WildActionCardType>;
+                            card.Penalty(players[nextPlayerIndex]);
+                        }
+                        else if (IsColoredActionCard)
+                        {
+                            IActionable<ColoredActionCardType> card = playedCard as IActionable<ColoredActionCardType>;
+                            card.Penalty(players[nextPlayerIndex]);
+                        }
+                    }
                     if (player.Hand.GetHandSize() == 0)
                     {
                         Console.WriteLine("player {0} won the game!", player.Name); 
@@ -50,31 +67,6 @@ namespace OOPUNOExamples
                     if (player.Uno)
                     {
                         Console.WriteLine("{0}: Uno!", player.Name);
-                    }
-
-                    //ActionCard Handling
-                    //TODO: this should be in the ActionCard classes, to disribute responsibility.
-                    Card topCard = Player.deck.DiscardPile.GetTopCard();
-
-                    if (typeof(IActionable<ColoredActionCardType>).IsAssignableFrom(topCard.GetType())) 
-                    {
-                        //DEBUG: Console.WriteLine("Top card is a ColoredActionCardType");
-                        IActionable<ColoredActionCardType> card = (IActionable<ColoredActionCardType>)topCard;
-                        if (card.CardType == ColoredActionCardType.SkipTurn)
-                        {
-                            SkipTurn = true;
-                        }
-                        else if (card.CardType == ColoredActionCardType.SwitchDirection)
-                        {
-                            players.Reverse(); //TODO: test this with more than 2 players
-                        }
-                        else if (card.CardType == ColoredActionCardType.DrawTwo)
-                        {
-                            int nextPlayerIndex = i + 1;
-                            players[nextPlayerIndex].DrawCards(2);
-                            Console.WriteLine("{0} has to draw two cards!", players[nextPlayerIndex].Name);
-                            Console.ReadKey();
-                        }
                     }
                 }
                 Console.WriteLine("Press enter for next round or ESC to stop playing.");

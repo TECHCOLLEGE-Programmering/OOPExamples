@@ -18,6 +18,8 @@ namespace OOPUNOExamples.Classes
                 otherCard.GetType().IsSubclassOf(typeof(WildCard));
             if (isWildCard) {
                 WildCard c = otherCard as WildCard;
+                if (c.Color == null)
+                    return false;
                 return c.Color.GetType() == this.GetType() ||
                 c.Color.GetType().IsSubclassOf(this.GetType()) ||
                 this.GetType().IsSubclassOf(c.Color.GetType());
