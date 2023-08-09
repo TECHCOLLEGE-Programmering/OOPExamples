@@ -18,7 +18,9 @@ namespace OOPUNOExamples.Classes
                 topCard = Cards.Last();
 
             }
-            catch (NullReferenceException)
+            catch (Exception ex) when (
+                ex is NullReferenceException ||
+                ex is InvalidOperationException)
             {
                 Console.WriteLine("Shuffling dicard pile, except for top card...");
                 Shuffle();
@@ -33,14 +35,15 @@ namespace OOPUNOExamples.Classes
         /// <summary>
         /// Adds cards from discard pile to deck and shuffels deck.
         /// </summary>
-        private void Shuffle()
+        public override void Shuffle()
         {
             Card TopCard = DiscardPile.GetTopCard();
             DiscardPile.Cards.Remove(TopCard);
             Cards.AddRange(DiscardPile.Cards);
-            var rnd = new Random();
-            Cards.OrderBy(item => rnd.Next());
-            DiscardPile = new DiscardPile(Cards.Last()); //TODO: Make sure there is at least one card in the discard pile.
+            DiscardPile.Cards.Clear();
+            base.Shuffle();
+            DiscardPile = new DiscardPile(TopCard);
+            Console.WriteLine("Deck shuffled.");
         }
     }
 }

@@ -10,7 +10,7 @@ namespace OOPUNOExamples.Classes
     {
         internal List<Card> Cards = new List<Card>();
 
-        public void Shuffle()
+        public virtual void Shuffle()
         {
             Random rng = new();
             Cards = Cards.OrderBy(a => rng.Next()).ToList();
