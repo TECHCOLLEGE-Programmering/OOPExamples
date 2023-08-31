@@ -1,4 +1,5 @@
 ﻿using OOPUNOExamples.Classes;
+using OOPUNOExamples.Interfaces;
 using OOPUNOExamples.UI;
 using System;
 using System.Collections.Generic;
@@ -114,7 +115,7 @@ namespace OOPUNOExamples
             OptionsMenu menu = new OptionsMenu("Choose Deck Type", "Here you can choose what kinda of deck the game should use. Press ECS to Exit.", menuOptions);
             menu.MenuControl();
 
-            PromtScreen screen = new PromtScreen("Name Players", "Here you can give each player a name for the game. The game needs 2 - 4 players.");
+            IScreen screen = new Screen("Name Players", "Here you can give each player a name for the game. The game needs 2 - 4 players.");
             screen.Draw();
             string name;
             do

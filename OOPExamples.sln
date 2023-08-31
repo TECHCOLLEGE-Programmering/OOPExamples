@@ -5,10 +5,12 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOPUNOExamples", "OOPUNOExamples\OOPUNOExamples.csproj", "{D288876B-AB95-468A-B899-B91FBC2DA550}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOOPUNOExamples", "TestOOPUNOExamples\TestOOPUNOExamples.csproj", "{2907E163-D5BF-4752-A39C-6D27F3D28C7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOOPUNOExamples", "TestOOPUNOExamples\TestOOPUNOExamples.csproj", "{2907E163-D5BF-4752-A39C-6D27F3D28C7E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D288876B-AB95-468A-B899-B91FBC2DA550} = {D288876B-AB95-468A-B899-B91FBC2DA550}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UNO_UI", "UNO_UI\UNO_UI.csproj", "{4D448838-F8BD-44A0-A815-032BC6B6AD6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 		{2907E163-D5BF-4752-A39C-6D27F3D28C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2907E163-D5BF-4752-A39C-6D27F3D28C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2907E163-D5BF-4752-A39C-6D27F3D28C7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D448838-F8BD-44A0-A815-032BC6B6AD6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D448838-F8BD-44A0-A815-032BC6B6AD6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D448838-F8BD-44A0-A815-032BC6B6AD6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D448838-F8BD-44A0-A815-032BC6B6AD6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

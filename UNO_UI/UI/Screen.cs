@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OOPUNOExamples.Interfaces;
 
 namespace OOPUNOExamples.UI
 {
-    public class Screen
+    public class Screen : IScreen
     {
         public Screen(string title, string body)
         {
@@ -72,6 +73,11 @@ namespace OOPUNOExamples.UI
                 }
             } while (value == null);
             return value;
+        }
+        public String PromtUser(string promt)
+        {
+            Console.Write("\n");
+            return this.EnterStringValue(promt);
         }
     }
 }
